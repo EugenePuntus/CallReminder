@@ -8,5 +8,15 @@ namespace CallReminder.Common
         {
             return 3;
         }
+
+        private void Issue03()
+        {
+            Console.WriteLine("Do work...");
+        }
+
+        public void ParIssue03()
+        {
+            Issue03();
+        }
     }
 }
