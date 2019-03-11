@@ -64,23 +64,23 @@
     <Reference Include="Cirrious.FluentLayouts.Touch, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Cirrious.FluentLayout.2.9.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="FlexiMvvm.Bindings, Version=0.10.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FlexiMvvm.Bindings.PreRelease.0.10.5-prerelease\lib\xamarinios10\FlexiMvvm.Bindings.dll</HintPath>
+    <Reference Include="FlexiMvvm.Bindings, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlexiMvvm.Bindings.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Bindings.dll</HintPath>
     </Reference>
-    <Reference Include="FlexiMvvm.Collections, Version=0.10.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FlexiMvvm.Collections.PreRelease.0.10.5-prerelease\lib\xamarinios10\FlexiMvvm.Collections.dll</HintPath>
+    <Reference Include="FlexiMvvm.Collections, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlexiMvvm.Collections.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="FlexiMvvm.Common, Version=0.10.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FlexiMvvm.Common.PreRelease.0.10.5-prerelease\lib\netstandard2.0\FlexiMvvm.Common.dll</HintPath>
+    <Reference Include="FlexiMvvm.Common, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlexiMvvm.Common.PreRelease.0.9.7-prerelease\lib\netstandard2.0\FlexiMvvm.Common.dll</HintPath>
     </Reference>
-    <Reference Include="FlexiMvvm.Essentials, Version=0.10.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FlexiMvvm.Essentials.PreRelease.0.10.5-prerelease\lib\xamarinios10\FlexiMvvm.Essentials.dll</HintPath>
+    <Reference Include="FlexiMvvm.Essentials, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlexiMvvm.Essentials.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Essentials.dll</HintPath>
     </Reference>
     <Reference Include="FlexiMvvm.Full, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FlexiMvvm.Full.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Full.dll</HintPath>
     </Reference>
-    <Reference Include="FlexiMvvm.Lifecycle, Version=0.10.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FlexiMvvm.Lifecycle.PreRelease.0.10.5-prerelease\lib\xamarinios10\FlexiMvvm.Lifecycle.dll</HintPath>
+    <Reference Include="FlexiMvvm.Lifecycle, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlexiMvvm.Lifecycle.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Lifecycle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -152,9 +152,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CallReminder.Common\CallReminder.Common.csproj">
+    <ProjectReference Include="..\CallReminder.Common\CallReminder.Core.csproj">
       <Project>{085b7abe-d267-4194-a713-6009ce3858cc}</Project>
-      <Name>CallReminder.Common</Name>
+      <Name>CallReminder.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
