@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="SeparatorSize">1dp</dimen>
+    <dimen name="CellSize">72dp</dimen>
 </resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	<android.support.design.widget.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/page_appbar">
+		<android.support.v7.widget.Toolbar
+			android:id="@+id/action_toolbar"
+			android:layout_width="wrap_content"
+			android:layout_height="46dp">		
+
+			<Button 
+				android:id="@+id/back_button"
+				android:background="@drawable/abc_ic_ab_back_material"
+				style="@style/AppTheme.Toolbar.ImageButton"/>
+
+		</android.support.v7.widget.Toolbar>
+	</android.support.design.widget.AppBarLayout>
+
+	<TextView 
+		android:id="@+id/detail_text_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="46dp"
+		android:text="Detail Page"/>
+
+</RelativeLayout>

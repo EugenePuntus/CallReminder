@@ -17,4 +17,47 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.SplashScreen" parent ="AppTheme">
+      <item name="android:background">@drawable/splash_screen</item>
+      <item name="android:windowNoTitle">true</item>
+      <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="AppTheme.SeparatorView">
+      <item name="android:layout_width">match_parent</item>
+      <item name="android:layout_height">@dimen/SeparatorSize</item>
+    </style>
+
+    <style name="AppTheme.SeparatorCellView" parent="AppTheme.SeparatorView">
+      <item name="android:background">@color/colorSeparatorCell</item>
+    </style>
+
+    <style name="AppTheme.SeparatorDetailView" parent="AppTheme.SeparatorView">
+      <item name="android:background">@color/colorSeparatorDetail</item>
+    </style>
+
+    <style name="AppTheme.Toolbar">
+      <item name="colorPrimary">@color/colorPrimary</item>
+      <item name="colorAccent">@color/colorAccent</item>
+      <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.Header">
+      <item name="android:background">@null</item>
+      <item name="android:textColor">@color/colorHeader</item>
+      <item name="android:textSize">20sp</item>
+      <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.Button">
+      <item name="android:background">@null</item>
+      <item name="android:textColor">@color/colorHeader</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.ImageButton">
+      <item name="android:layout_width">24dp</item>
+      <item name="android:layout_height">24dp</item>
+      <item name="android:backgroundTint">@color/colorButtonText</item>
+    </style>
+
 </resources>
