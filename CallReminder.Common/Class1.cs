@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CallReminder.Common
+﻿namespace CallReminder.Core
 {
     public class Class1
     {
