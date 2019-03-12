@@ -19,7 +19,10 @@ namespace CallReminder.Droid.Views
          private AppBarLayout pageAppbar;
          private Toolbar actionToolbar;
          private Button backButton;
-         private TextView detailTextView;
+         private Button personAdd;
+         private TextInputLayout nameContact;
+         private EditText phoneContact;
+         private WeekDayFragmentViewHolder calendarWeekDayViewHolder;
 
         public DetailActivityViewHolder( Activity activity)
         {
@@ -41,8 +44,20 @@ namespace CallReminder.Droid.Views
             backButton ?? (backButton = activity.FindViewById<Button>(Resource.Id.back_button));
 
         
-        public TextView DetailTextView =>
-            detailTextView ?? (detailTextView = activity.FindViewById<TextView>(Resource.Id.detail_text_view));
+        public Button PersonAdd =>
+            personAdd ?? (personAdd = activity.FindViewById<Button>(Resource.Id.person_add));
+
+        
+        public TextInputLayout NameContact =>
+            nameContact ?? (nameContact = activity.FindViewById<TextInputLayout>(Resource.Id.name_contact));
+
+        
+        public EditText PhoneContact =>
+            phoneContact ?? (phoneContact = activity.FindViewById<EditText>(Resource.Id.phone_contact));
+
+        
+        public WeekDayFragmentViewHolder CalendarWeekDayViewHolder =>
+            calendarWeekDayViewHolder ?? (calendarWeekDayViewHolder = new WeekDayFragmentViewHolder(activity.FindViewById<LinearLayout>(Resource.Id.calendar_week_day)));
     }
 
     public partial class HomeActivityViewHolder
@@ -92,6 +107,54 @@ namespace CallReminder.Droid.Views
         
         public TextView ReminderDuration =>
             reminderDuration ?? (reminderDuration = ItemView.FindViewById<TextView>(Resource.Id.reminder_duration));
+    }
+
+    public partial class WeekDayFragmentViewHolder
+    {
+         private readonly View rootView;
+
+         private CheckBox monday;
+         private CheckBox tuesday;
+         private CheckBox wednesday;
+         private CheckBox thursday;
+         private CheckBox friday;
+         private CheckBox suturday;
+         private CheckBox sunday;
+
+        public WeekDayFragmentViewHolder( View rootView)
+        {
+            if (rootView == null) throw new ArgumentNullException(nameof(rootView));
+
+            this.rootView = rootView;
+        }
+
+        
+        public CheckBox Monday =>
+            monday ?? (monday = rootView.FindViewById<CheckBox>(Resource.Id.monday));
+
+        
+        public CheckBox Tuesday =>
+            tuesday ?? (tuesday = rootView.FindViewById<CheckBox>(Resource.Id.tuesday));
+
+        
+        public CheckBox Wednesday =>
+            wednesday ?? (wednesday = rootView.FindViewById<CheckBox>(Resource.Id.wednesday));
+
+        
+        public CheckBox Thursday =>
+            thursday ?? (thursday = rootView.FindViewById<CheckBox>(Resource.Id.thursday));
+
+        
+        public CheckBox Friday =>
+            friday ?? (friday = rootView.FindViewById<CheckBox>(Resource.Id.friday));
+
+        
+        public CheckBox Suturday =>
+            suturday ?? (suturday = rootView.FindViewById<CheckBox>(Resource.Id.suturday));
+
+        
+        public CheckBox Sunday =>
+            sunday ?? (sunday = rootView.FindViewById<CheckBox>(Resource.Id.sunday));
     }
 
 }

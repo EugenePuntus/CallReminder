@@ -10,22 +10,89 @@
 		android:id="@+id/page_appbar">
 		<android.support.v7.widget.Toolbar
 			android:id="@+id/action_toolbar"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="46dp">		
 
 			<Button 
 				android:id="@+id/back_button"
+				android:layout_gravity="left"
 				android:background="@drawable/abc_ic_ab_back_material"
 				style="@style/AppTheme.Toolbar.ImageButton"/>
+			
+			<Button
+				android:id="@+id/person_add"
+				android:background="@drawable/person_add_black"
+				style="@style/AppTheme.Toolbar.ImageButton"
+				android:layout_gravity="right" />
 
 		</android.support.v7.widget.Toolbar>
 	</android.support.design.widget.AppBarLayout>
 
-	<TextView 
-		android:id="@+id/detail_text_view"
-		android:layout_width="wrap_content"
+	<android.support.design.widget.TextInputLayout
+			android:id="@+id/name_contact"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="50dp"
+			android:layout_marginHorizontal="26dp">
+		<android.support.design.widget.TextInputEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@style/AppTheme.TextInputEditText"
+			android:hint="Name of contact"
+			android:imeOptions="actionNext"/>
+	</android.support.design.widget.TextInputLayout>
+	
+
+	<android.support.design.widget.TextInputLayout
+			android:id="@+id/phone_contact"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/name_contact"
+			android:layout_marginHorizontal="26dp">
+		<android.support.design.widget.TextInputEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@style/AppTheme.TextInputEditText"
+			android:hint="Phone of contact"
+			android:imeOptions="actionNext"/>
+	</android.support.design.widget.TextInputLayout>
+
+	<View
+		android:id="@+id/separator1"
+		style="@style/AppTheme.SeparatorCellView"
+		android:layout_below="@id/phone_contact"
+		android:layout_marginVertical="16dp"/>
+
+	<TextView
+			android:id="@+id/time_reminder"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="08:00"
+			android:textSize="42sp"
+			android:gravity="center"
+			android:textColor="@color/colorAccent"
+			android:layout_below="@id/separator1"/>
+
+	<View
+		android:id="@+id/separator2"
+		style="@style/AppTheme.SeparatorCellView"
+		android:layout_below="@id/time_reminder"
+		android:layout_marginVertical="16dp"/>
+
+	<include
+		android:id="@+id/calendar_week_day"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="46dp"
-		android:text="Detail Page"/>
+		layout="@layout/fragment_week_day"
+		android:layout_below="@id/separator2"/>
+
+	<android.support.design.widget.FloatingActionButton		
+		style="@style/AppTheme.Fab"
+		app:layout_anchorGravity="end|bottom"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentBottom="true"
+		android:layout_marginRight = "16dp"
+		android:layout_marginBottom = "16dp"
+		android:src="@drawable/check_black">
 
 </RelativeLayout>

@@ -80,6 +80,21 @@
     <AndroidResource Include="Resources\layout\activity_detail.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_week_day.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\weekday_selector.xml" />
+    <AndroidResource Include="Resources\drawable\checked_down.xml" />
+    <AndroidResource Include="Resources\drawable\checked_press.xml" />
+    <AndroidResource Include="Resources\drawable\my_chk_checked.xml" />
+    <AndroidResource Include="Resources\drawable\my_chk_normal.xml" />
+    <AndroidResource Include="Resources\drawable\my_chk.xml" />
+    <AndroidResource Include="Resources\drawable\button_effect.xml" />
+    <AndroidResource Include="Resources\drawable\weekday_animation.xml" />
+    <AndroidResource Include="Resources\drawable\person_add_black.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\check_black.png" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator1.cs</LastGenOutput>

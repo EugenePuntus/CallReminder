@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:gravity="center">
+		
+	<CheckBox 
+		android:id="@+id/monday"
+		style="@style/AppTheme.WeekDay"
+		android:text="Mn"
+		android:checked="true"/>
+	
+	<CheckBox 
+		android:id="@+id/tuesday"
+		style="@style/AppTheme.WeekDay"
+		android:text="Ts"
+		android:checked="true"/>
+	
+	<CheckBox 
+		android:id="@+id/wednesday"
+		style="@style/AppTheme.WeekDay"
+		android:text="Wd"
+		android:checked="true"/>
+	
+	<CheckBox 
+		android:id="@+id/thursday"
+		style="@style/AppTheme.WeekDay"
+		android:text="Th"
+		android:checked="true"/>
+	
+	<CheckBox 
+		android:id="@+id/friday"
+		style="@style/AppTheme.WeekDay"
+		android:text="Fr"
+		android:checked="true"/>
+
+	<CheckBox 
+		android:id="@+id/suturday"
+		style="@style/AppTheme.WeekDay"
+		android:text="Sa"
+		android:checked="true"/>
+
+	<CheckBox 
+		android:id="@+id/sunday"
+		style="@style/AppTheme.WeekDay"
+		android:text="Su"
+		android:checked="true"/>
+
+</LinearLayout>

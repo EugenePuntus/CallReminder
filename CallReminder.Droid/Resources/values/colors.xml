@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#1B3147</color>
     <color name="colorAccent">#3498db</color>
 
-  <color name="colorButton">#3bc4d6</color>
-  <color name="colorButtonText">#fff</color>
+    <color name="colorButton">#3bc4d6</color>
+    <color name="colorButtonText">#fff</color>
 
     <color name="colorHeader">#fff</color>
     <color name="colorSeparatorCell">#999999</color>

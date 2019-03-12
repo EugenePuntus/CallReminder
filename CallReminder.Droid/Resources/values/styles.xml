@@ -23,6 +23,15 @@
       <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="AppTheme.WeekDay">
+      <item name="android:layout_width">36dp</item>
+      <item name="android:layout_height">36dp</item>
+      <item name="android:textSize">12sp</item>
+      <item name="android:gravity">center</item>
+      <item name="android:button">@null</item>
+      <item name="android:background">@drawable/weekday_selector</item>
+    </style>
+
     <style name="AppTheme.SeparatorView">
       <item name="android:layout_width">match_parent</item>
       <item name="android:layout_height">@dimen/SeparatorSize</item>
@@ -59,5 +68,28 @@
       <item name="android:layout_height">24dp</item>
       <item name="android:backgroundTint">@color/colorButtonText</item>
     </style>
+
+    <style name="AppTheme.TextInputLayout">
+      <item name="android:layout_width">match_parent</item>
+      <item name="android:layout_height">@dimen/TextInputLayoutSize</item>
+      <item name="android:textColorHint">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.TextInputEditText">
+      <item name="android:layout_width">match_parent</item>
+      <item name="android:layout_height">wrap_content</item>
+      <item name="android:singleLine">true</item>
+      <item name="android:paddingHorizontal">@dimen/Inset3X</item>
+      <item name="android:textColor">@color/colorTextInputEdit</item>
+      <item name="android:backgroundTint">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Fab">
+      <item name="fabSize">normal</item>
+      <item name="android:layout_width">wrap_content</item>
+      <item name="android:layout_height">wrap_content</item>
+      <item name="android:tint">@android:color/white</item>
+    </style>
+
 
 </resources>
