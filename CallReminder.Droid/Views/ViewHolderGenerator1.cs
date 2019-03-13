@@ -12,6 +12,39 @@ using Android.Support.V4.View;
 
 namespace CallReminder.Droid.Views
 {
+    public partial class ContactActivityViewHolder
+    {
+         private readonly Activity activity;
+
+         private Toolbar contactToolbar;
+         private Button backButton;
+         private Button applyButton;
+         private RecyclerView contactRecyclerView;
+
+        public ContactActivityViewHolder( Activity activity)
+        {
+            if (activity == null) throw new ArgumentNullException(nameof(activity));
+
+            this.activity = activity;
+        }
+
+        
+        public Toolbar ContactToolbar =>
+            contactToolbar ?? (contactToolbar = activity.FindViewById<Toolbar>(Resource.Id.contact_toolbar));
+
+        
+        public Button BackButton =>
+            backButton ?? (backButton = activity.FindViewById<Button>(Resource.Id.back_button));
+
+        
+        public Button ApplyButton =>
+            applyButton ?? (applyButton = activity.FindViewById<Button>(Resource.Id.apply_button));
+
+        
+        public RecyclerView ContactRecyclerView =>
+            contactRecyclerView ?? (contactRecyclerView = activity.FindViewById<RecyclerView>(Resource.Id.contact_recycler_view));
+    }
+
     public partial class DetailActivityViewHolder
     {
          private readonly Activity activity;
@@ -21,7 +54,10 @@ namespace CallReminder.Droid.Views
          private Button backButton;
          private Button personAdd;
          private TextInputLayout nameContact;
-         private EditText phoneContact;
+         private TextInputLayout phoneContact;
+         private View separator1;
+         private TextView timeReminder;
+         private View separator2;
          private WeekDayFragmentViewHolder calendarWeekDayViewHolder;
 
         public DetailActivityViewHolder( Activity activity)
@@ -52,8 +88,20 @@ namespace CallReminder.Droid.Views
             nameContact ?? (nameContact = activity.FindViewById<TextInputLayout>(Resource.Id.name_contact));
 
         
-        public EditText PhoneContact =>
-            phoneContact ?? (phoneContact = activity.FindViewById<EditText>(Resource.Id.phone_contact));
+        public TextInputLayout PhoneContact =>
+            phoneContact ?? (phoneContact = activity.FindViewById<TextInputLayout>(Resource.Id.phone_contact));
+
+        
+        public View Separator1 =>
+            separator1 ?? (separator1 = activity.FindViewById<View>(Resource.Id.separator1));
+
+        
+        public TextView TimeReminder =>
+            timeReminder ?? (timeReminder = activity.FindViewById<TextView>(Resource.Id.time_reminder));
+
+        
+        public View Separator2 =>
+            separator2 ?? (separator2 = activity.FindViewById<View>(Resource.Id.separator2));
 
         
         public WeekDayFragmentViewHolder CalendarWeekDayViewHolder =>
@@ -81,6 +129,27 @@ namespace CallReminder.Droid.Views
         
         public FloatingActionButton AddNewReminder =>
             addNewReminder ?? (addNewReminder = activity.FindViewById<FloatingActionButton>(Resource.Id.add_new_reminder));
+    }
+
+    public partial class ContactItemCellViewHolder
+    {
+         private ImageView contactImage;
+         private TextView contactName;
+         private TextView contactPhone;
+
+
+
+        
+        public ImageView ContactImage =>
+            contactImage ?? (contactImage = ItemView.FindViewById<ImageView>(Resource.Id.contact_image));
+
+        
+        public TextView ContactName =>
+            contactName ?? (contactName = ItemView.FindViewById<TextView>(Resource.Id.contact_name));
+
+        
+        public TextView ContactPhone =>
+            contactPhone ?? (contactPhone = ItemView.FindViewById<TextView>(Resource.Id.contact_phone));
     }
 
     public partial class ReminderItemCellViewHolder

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"	
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/CellSize">
+
+	<ImageView
+		android:id="@+id/contact_image"
+		android:layout_width="46dp"
+		android:layout_height="46dp"
+		android:layout_centerVertical="true"
+		android:layout_alignParentLeft="true"
+		android:src="@drawable/account_circle_black"/>
+
+	<TextView
+		android:id="@+id/contact_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Ivanov Ivan"
+		android:textSize="24sp"
+		android:textStyle="bold"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:layout_toRightOf="@id/contact_image"/>
+
+	<TextView
+		android:id="@+id/contact_phone"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="+375 29 111-22-33"
+		android:layout_below="@id/contact_name"
+		android:layout_alignLeft="@id/contact_name"/>
+
+	<View
+		android:layout_width="match_parent"
+		style="@style/AppTheme.SeparatorCellView"
+		android:layout_alignLeft="@id/contact_name"
+		android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

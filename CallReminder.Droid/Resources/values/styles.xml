@@ -71,7 +71,6 @@
 
     <style name="AppTheme.TextInputLayout">
       <item name="android:layout_width">match_parent</item>
-      <item name="android:layout_height">@dimen/TextInputLayoutSize</item>
       <item name="android:textColorHint">@color/colorPrimary</item>
     </style>
 
@@ -79,8 +78,7 @@
       <item name="android:layout_width">match_parent</item>
       <item name="android:layout_height">wrap_content</item>
       <item name="android:singleLine">true</item>
-      <item name="android:paddingHorizontal">@dimen/Inset3X</item>
-      <item name="android:textColor">@color/colorTextInputEdit</item>
+      <item name="android:paddingHorizontal">12dp</item>
       <item name="android:backgroundTint">@color/colorAccent</item>
     </style>
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	<android.support.design.widget.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="46dp">
+		<android.support.v7.widget.Toolbar
+			android:id="@+id/contact_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+				<Button
+					android:id="@+id/back_button"
+					style="@style/AppTheme.Toolbar.ImageButton"
+					android:background="@drawable/abc_ic_ab_back_material"
+					android:layout_gravity="left"/>
+				<Button
+					android:id="@+id/apply_button"
+					style="@style/AppTheme.Toolbar.ImageButton"
+					android:background="@drawable/check_black"
+					android:layout_gravity="right"/>
+		</android.support.v7.widget.Toolbar>
+	</android.support.design.widget.AppBarLayout>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/contact_recycler_view"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginTop="46dp"/>
+
+</android.support.design.widget.CoordinatorLayout>

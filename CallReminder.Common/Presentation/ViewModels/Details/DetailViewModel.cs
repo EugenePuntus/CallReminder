@@ -49,6 +49,8 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
 
         public ICommand BackToHomeCommand => CommandProvider.Get(BackToHome);
 
+        public ICommand ChangeContactCommand => CommandProvider.Get(ChangeContact);
+
         public ICommand SaveReminderCommand => CommandProvider.GetForAsync(SaveReminder);
 
         public DetailViewModel(INavigationService navigationService, IReminderRepository reminderRepository)
@@ -96,6 +98,11 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
         private void BackToHome()
         {
             _navigationService.NavigateBackToHome(this);
+        }
+
+        private void ChangeContact()
+        {
+            _navigationService.NavigateToContact(this);
         }
 
         private async Task SaveReminder()

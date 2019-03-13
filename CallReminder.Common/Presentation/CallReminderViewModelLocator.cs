@@ -1,4 +1,6 @@
-﻿using CallReminder.Core.Navigation;
+﻿using CallReminder.Core.Infrastructure;
+using CallReminder.Core.Navigation;
+using CallReminder.Core.Presentation.ViewModels.Contacts;
 using CallReminder.Core.Presentation.ViewModels.Details;
 using CallReminder.Core.Presentation.ViewModels.Home;
 using CallReminder.Core.Repositories.Interfaces;
@@ -21,6 +23,7 @@ namespace CallReminder.Core.Presentation
             factory.Register(() => new EntryViewModel(_dependencyProvider.Get<INavigationService>()));
             factory.Register(() => new HomeViewModel(_dependencyProvider.Get<INavigationService>(), _dependencyProvider.Get<IReminderRepository>()));
             factory.Register(() => new DetailViewModel(_dependencyProvider.Get<INavigationService>(), _dependencyProvider.Get<IReminderRepository>()));
+            factory.Register(() => new ContactViewModel(_dependencyProvider.Get<INavigationService>(), _dependencyProvider.Get<IContactService>()));
         }
     }
 }

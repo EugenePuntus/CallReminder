@@ -16,17 +16,18 @@ namespace CallReminder.Droid.Infrastructure
 
         public ContactService()
         {
-            var uri = ContactsContract.Contacts.ContentUri;
+            var uri = ContactsContract.CommonDataKinds.Phone.ContentUri;
             _projections = new []
             {
                 ContactsContract.Contacts.InterfaceConsts.Id,
                 ContactsContract.Contacts.InterfaceConsts.DisplayName,
                 ContactsContract.Contacts.InterfaceConsts.PhotoId,
-                ContactsContract.Contacts.InterfaceConsts.HasPhoneNumber
+                ContactsContract.Contacts.InterfaceConsts.HasPhoneNumber,
+                ContactsContract.CommonDataKinds.Phone.Number
             };
 
             var loader = new CursorLoader(Application.Context, uri, _projections, null, null, null);
-            _cursor = (ICursor) loader.LoadInBackground();
+            _cursor = (ICursor)loader.LoadInBackground();
         }
 
         public IEnumerable<ContactModel> GetContacts()
@@ -40,16 +41,16 @@ namespace CallReminder.Droid.Infrastructure
 
             do
             {
-                var hasPhoneNumber = _cursor.GetString(_cursor.GetColumnIndex(_projections[3]));
+                var hasPhoneNumber = _cursor.GetShort(_cursor.GetColumnIndex(_projections[3]));
 
-                if (hasPhoneNumber != "false")
+                if (hasPhoneNumber == 1)
                 {
                     contactList.Add(new ContactModel()
                     {
                         Id = _cursor.GetLong(_cursor.GetColumnIndex(_projections[0])),
                         Name = _cursor.GetString(_cursor.GetColumnIndex(_projections[1])),
                         PhotoId = _cursor.GetString(_cursor.GetColumnIndex(_projections[2])),
-
+                        Phone = _cursor.GetString(_cursor.GetColumnIndex(_projections[4]))
                     });
                 }
             } while (_cursor.MoveToNext());

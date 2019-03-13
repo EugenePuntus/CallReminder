@@ -29,6 +29,10 @@ namespace CallReminder.Droid.Views.Details
             bindingSet.Bind(ViewHolder.BackButton)
                 .For(v => v.ClickBinding())
                 .To(vm => vm.BackToHomeCommand);
+
+            bindingSet.Bind(ViewHolder.PersonAdd)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.ChangeContactCommand);
         }
     }
 }
