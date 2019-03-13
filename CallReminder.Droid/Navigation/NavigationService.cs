@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using Android.App;
+using Android.Content;
 using CallReminder.Core.Navigation;
 using CallReminder.Core.Presentation;
 using CallReminder.Core.Presentation.ViewModels.Contacts;
@@ -41,12 +42,23 @@ namespace CallReminder.Droid.Navigation
         {
             var detailActivity = GetActivity<DetailViewModel, DetailActivity>(fromModel);
             var contactIntent = new Intent(detailActivity, typeof(ContactActivity));
-            detailActivity.NotNull().StartActivity(contactIntent);
+            detailActivity.NotNull().StartActivityForResult(contactIntent, 1);
         }
 
         public void NavigateBackToDetail(ContactViewModel fromModel)
         {
             var contactActivity = GetActivity<ContactViewModel, ContactActivity>(fromModel);
+            contactActivity.NotNull().Finish();
+        }
+
+        public void NavigateBackToDetail(ContactViewModel fromModel, ContactParameters parameters)
+        {
+            var contactActivity = GetActivity<ContactViewModel, ContactActivity>(fromModel);
+
+            var intent = new Intent();
+            intent.PutViewModelParameters(parameters);
+            contactActivity.NotNull().SetResult(Result.Ok, intent);
+
             contactActivity.NotNull().Finish();
         }
     }

@@ -16,5 +16,7 @@ namespace CallReminder.Core.Navigation
         void NavigateToContact(DetailViewModel fromModel);
 
         void NavigateBackToDetail(ContactViewModel fromModel);
+
+        void NavigateBackToDetail(ContactViewModel fromModel, ContactParameters parameters);
     }
 }

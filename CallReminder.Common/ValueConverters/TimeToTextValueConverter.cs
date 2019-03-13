@@ -12,5 +12,12 @@ namespace CallReminder.Core.ValueConverters
 
             return ConversionResult<string>.SetValue(result);
         }
+
+        protected override ConversionResult<DateTime> ConvertBack(string value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var result = DateTime.Parse(value, CultureInfo.InvariantCulture);
+
+            return ConversionResult<DateTime>.SetValue(result);
+        }
     }
 }

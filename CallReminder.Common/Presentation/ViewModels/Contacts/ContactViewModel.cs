@@ -25,6 +25,8 @@ namespace CallReminder.Core.Presentation.ViewModels.Contacts
 
         public ICommand ApplyContactCommand => CommandProvider.Get(ApplyContact);
 
+        public ICommand ChangeContactCommand => CommandProvider.Get<ContactItemViewModel>(ChangeContact);
+
         public ContactViewModel(INavigationService navigationService, IContactService contactService)
         {
             _navigationService = navigationService;
@@ -48,6 +50,12 @@ namespace CallReminder.Core.Presentation.ViewModels.Contacts
             //TODO apply contact
 
             _navigationService.NavigateBackToDetail(this);
+        }
+
+        private void ChangeContact(ContactItemViewModel viewModel)
+        {
+            var parameter = new ContactParameters() {Name = viewModel.Name, Phone = viewModel.Phone};
+            _navigationService.NavigateBackToDetail(this, parameter);
         }
     }
 }

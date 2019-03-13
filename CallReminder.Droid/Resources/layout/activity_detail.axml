@@ -25,7 +25,7 @@
 				android:id="@+id/person_add"
 				android:background="@drawable/person_add_black"
 				style="@style/AppTheme.Toolbar.ImageButton"
-				android:layout_gravity="right" />
+				android:layout_gravity="right"/>
 
 		</android.support.v7.widget.Toolbar>
 	</android.support.design.widget.AppBarLayout>
@@ -34,7 +34,7 @@
 			android:id="@+id/name_contact"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="50dp"
+			android:layout_marginTop="64dp"
 			android:layout_marginHorizontal="26dp">
 		<android.support.design.widget.TextInputEditText
 			android:layout_width="match_parent"

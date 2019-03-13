@@ -44,6 +44,10 @@ namespace CallReminder.Droid.Views.Contacts
             bindingSet.Bind(ViewHolder.ApplyButton)
                 .For(v => v.ClickBinding())
                 .To(vm => vm.ApplyContactCommand);
+
+            bindingSet.Bind(ContactAdapter)
+                .For(v => v.ItemClickedBinding())
+                .To(vm => vm.ChangeContactCommand);
         }
     }
 }

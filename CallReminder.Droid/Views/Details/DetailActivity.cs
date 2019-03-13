@@ -1,7 +1,12 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
+using Android.Content;
 using Android.OS;
+using CallReminder.Core.Presentation.ViewModels.Contacts;
 using CallReminder.Core.Presentation.ViewModels.Details;
+using CallReminder.Core.ValueConverters;
 using FlexiMvvm.Bindings;
+using FlexiMvvm.Views;
 using FlexiMvvm.Views.V7;
 
 namespace CallReminder.Droid.Views.Details
@@ -18,8 +23,24 @@ namespace CallReminder.Droid.Views.Details
             SetContentView(Resource.Layout.activity_detail);
 
             ViewHolder = new DetailActivityViewHolder(this);
+            ViewHolder.TimeReminder.ClickWeakSubscribe(TimeFromSelect_OnClick);
 
             SetSupportActionBar(ViewHolder.ActionToolbar);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (requestCode != 1 || resultCode != Result.Ok)
+            {
+                return;
+            }
+
+            var parameters = data.GetViewModelParameters<ContactParameters>();
+
+            ViewHolder.NameContact.EditText.Text = parameters?.Name;
+            ViewHolder.PhoneContact.EditText.Text = parameters?.Phone;
         }
 
         public override void Bind(BindingSet<DetailViewModel> bindingSet)
@@ -33,6 +54,27 @@ namespace CallReminder.Droid.Views.Details
             bindingSet.Bind(ViewHolder.PersonAdd)
                 .For(v => v.ClickBinding())
                 .To(vm => vm.ChangeContactCommand);
+
+            bindingSet.Bind(ViewHolder.NameContact.EditText)
+                .For(v => v.TextAndTextChangedBinding())
+                .To(vm => vm.Name);
+
+            bindingSet.Bind(ViewHolder.PhoneContact.EditText)
+                .For(v => v.TextAndTextChangedBinding())
+                .To(vm => vm.Phone);
+
+            bindingSet.Bind(ViewHolder.TimeReminder)
+                .For(v => v.TextBinding())
+                .To(vm => vm.Time)
+                .WithConvertion<TimeToTextValueConverter>()
+                .TwoWay();
         }
+
+        private void TimeFromSelect_OnClick(object sender, EventArgs eventArgs)
+        {
+            var frag = TimePickerFragment.NewInstance(ViewModel.Time, time => ViewModel.Time = time);
+            frag.Show(FragmentManager, string.Empty);
+        }
+
     }
 }

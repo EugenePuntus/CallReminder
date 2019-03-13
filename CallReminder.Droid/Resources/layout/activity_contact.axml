@@ -30,6 +30,8 @@
 		android:id="@+id/contact_recycler_view"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_marginTop="46dp"/>
+		android:layout_marginTop="46dp"
+		android:clickable="true"
+		android:background="@drawable/contact_selector"/>
 
 </android.support.design.widget.CoordinatorLayout>

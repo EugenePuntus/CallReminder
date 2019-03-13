@@ -81,7 +81,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
                     Id = Guid.Empty,
                     DayOfWeeks = new DayOfWeek[] { },
                     Repeat = false,
-                    Time = DateTime.Now,
+                    Time = new DateTime(1990, 1, 1, 9, 0, 0),
                     Name = string.Empty,
                     Phone = string.Empty
                 };
