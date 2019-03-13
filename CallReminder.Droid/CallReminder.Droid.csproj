@@ -59,6 +59,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bindings\WeekdayBinding.cs" />
     <Compile Include="Bootstraper\AndroidBootstrapper.cs" />
     <Compile Include="Infrastructure\ContactService.cs" />
     <Compile Include="Navigation\NavigationService.cs" />

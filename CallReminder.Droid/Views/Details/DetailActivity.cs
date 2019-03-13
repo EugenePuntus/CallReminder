@@ -5,6 +5,7 @@ using Android.OS;
 using CallReminder.Core.Presentation.ViewModels.Contacts;
 using CallReminder.Core.Presentation.ViewModels.Details;
 using CallReminder.Core.ValueConverters;
+using CallReminder.Droid.Bindings;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views;
 using FlexiMvvm.Views.V7;
@@ -68,6 +69,10 @@ namespace CallReminder.Droid.Views.Details
                 .To(vm => vm.Time)
                 .WithConvertion<TimeToTextValueConverter>()
                 .TwoWay();
+
+            bindingSet.Bind(ViewHolder.CalendarWeekDayViewHolder)
+                .For(v => v.WeekdayCheckedChangedBinding())
+                .To(vm => vm.DayOfWeeks);
         }
 
         private void TimeFromSelect_OnClick(object sender, EventArgs eventArgs)

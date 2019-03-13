@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CallReminder.Core.Domain;
 using CallReminder.Core.Navigation;
 using CallReminder.Core.Repositories.Interfaces;
 using FlexiMvvm;
-using FlexiMvvm.Collections;
 using ICommand = System.Windows.Input.ICommand;
 
 namespace CallReminder.Core.Presentation.ViewModels.Details
@@ -20,6 +19,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
         private string _phone;
         private DateTime _time;
         private bool _repeat;
+        private IEnumerable<DayOfWeek> _dayOfWeeks;
 
         public string Name
         {
@@ -45,7 +45,11 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
             set => Set(ref _repeat, value);
         }
 
-        public RangeObservableCollection<ReminderDayOfWeekParameters> DayOfWeeks { get; }
+        public IEnumerable<DayOfWeek> DayOfWeeks
+        {
+            get => _dayOfWeeks;
+            set => Set(ref _dayOfWeeks, value);
+        }
 
         public ICommand BackToHomeCommand => CommandProvider.Get(BackToHome);
 
@@ -58,10 +62,14 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
             _navigationService = navigationService;
             _reminderRepository = reminderRepository;
 
-            DayOfWeeks = new RangeObservableCollection<ReminderDayOfWeekParameters>(
-                Enum.GetValues(typeof(DayOfWeek))
-                    .Cast<DayOfWeek>()
-                    .Select(dayOfWeek => new ReminderDayOfWeekParameters(dayOfWeek)));
+            //DayOfWeeks = Enum.GetValues(typeof(DayOfWeek))
+            //    .Cast<DayOfWeek>()
+            //    .To;
+
+            //DayOfWeeks = new RangeObservableCollection<ReminderDayOfWeekParameters>(
+            //    Enum.GetValues(typeof(DayOfWeek))
+            //        .Cast<DayOfWeek>()
+            //        .Select(dayOfWeek => new ReminderDayOfWeekParameters(dayOfWeek)));
         }
 
         protected override async Task InitializeAsync(ReminderDetailParameters parameters)
@@ -92,7 +100,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
             Phone = reminder.Phone;
             Time = reminder.Time;
             Repeat = reminder.Repeat;
-            //TODO selected daysOfWeek
+            DayOfWeeks = reminder.DayOfWeeks;
         }
 
         private void BackToHome()
@@ -114,7 +122,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
                 Repeat = Repeat,
                 Phone = Phone,
                 Name = Name,
-                DayOfWeeks = DayOfWeeks.Select(x => x.DayOfWeek)
+                DayOfWeeks = DayOfWeeks
             };
 
             await _reminderRepository.CreateOrUpdateReminderAsync(model, CancellationToken.None);
