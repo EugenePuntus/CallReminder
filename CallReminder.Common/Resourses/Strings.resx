@@ -123,4 +123,7 @@
   <data name="FillRequiredField" xml:space="preserve">
     <value>Fill required fields</value>
   </data>
+  <data name="RequiredFieldError" xml:space="preserve">
+    <value>Field can't empty</value>
+  </data>
 </root>

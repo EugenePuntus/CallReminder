@@ -19,7 +19,9 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
         private readonly IDialogService _dialogService;
         private Guid _id;
         private string _name;
+        private string _nameError;
         private string _phone;
+        private string _phoneError;
         private DateTime _time;
         private bool _repeat;
         private DayOfWeeksFlags _dayOfWeeks;
@@ -27,13 +29,33 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
         public string Name
         {
             get => _name;
-            set => Set(ref _name, value);
+            set
+            {
+                Set(ref _name, value);
+                NameError = string.Empty;
+            }
+        }
+
+        public string NameError
+        {
+            get => _nameError;
+            set => Set(ref _nameError, value);
         }
 
         public string Phone
         {
             get => _phone;
-            set => Set(ref _phone, value);
+            set
+            {
+                Set(ref _phone, value);
+                PhoneError = string.Empty;
+            }
+        }
+
+        public string PhoneError
+        {
+            get => _phoneError;
+            set => Set(ref _phoneError, value);
         }
 
         public DateTime Time
@@ -123,6 +145,10 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
             if(string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Phone))
             {
                 _dialogService.ShowNotification(sender, Strings.FillRequiredField);
+
+                NameError = string.IsNullOrWhiteSpace(Name) ? Strings.RequiredFieldError : string.Empty;
+                PhoneError = string.IsNullOrWhiteSpace(Phone) ? Strings.RequiredFieldError : string.Empty;
+
                 return;
             }
 

@@ -64,6 +64,14 @@ namespace CallReminder.Droid.Views.Details
                 .For(v => v.TextAndTextChangedBinding())
                 .To(vm => vm.Phone);
 
+            bindingSet.Bind(ViewHolder.NameContact)
+                .For(v => v.ErrorBinding())
+                .To(vm => vm.NameError);
+
+            bindingSet.Bind(ViewHolder.PhoneContact)
+                .For(v => v.ErrorBinding())
+                .To(vm => vm.PhoneError);
+
             bindingSet.Bind(ViewHolder.TimeReminder)
                 .For(v => v.TextBinding())
                 .To(vm => vm.Time)

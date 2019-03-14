@@ -77,5 +77,14 @@ namespace CallReminder.Core.Resourses {
                 return ResourceManager.GetString("FillRequiredField", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field can&apos;t empty.
+        /// </summary>
+        internal static string RequiredFieldError {
+            get {
+                return ResourceManager.GetString("RequiredFieldError", resourceCulture);
+            }
+        }
     }
 }
