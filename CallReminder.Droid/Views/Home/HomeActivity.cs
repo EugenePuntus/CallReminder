@@ -2,6 +2,7 @@
 using Android.OS;
 using Android.Support.V7.Widget;
 using CallReminder.Core.Presentation.ViewModels.Home;
+using CallReminder.Droid.Bindings;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
 
@@ -22,13 +23,17 @@ namespace CallReminder.Droid.Views.Home
 
             ViewHolder = new HomeActivityViewHolder(this);
 
-            ReminderAdapter = new ReminderAdapter(ViewHolder.ReminderRecyclerView, ViewModel)
+            ReminderAdapter = new ReminderAdapter(
+                ViewHolder.ReminderRecyclerView,
+                ViewModel)
             {
                 Items = ViewModel.Reminders
             };
 
             ViewHolder.ReminderRecyclerView.SetAdapter(ReminderAdapter);
             ViewHolder.ReminderRecyclerView.SetLayoutManager(new LinearLayoutManager(this, 1, false));
+
+            ViewHolder.SwipeRefresh.SetColorSchemeResources(Resource.Color.colorAccent);
         }
 
         public override void Bind(BindingSet<HomeViewModel> bindingSet)
@@ -42,6 +47,18 @@ namespace CallReminder.Droid.Views.Home
             bindingSet.Bind(ViewHolder.AddNewReminder)
                 .For(v => v.ClickBinding())
                 .To(vm => vm.ReminderSelectedCommand);
+
+            bindingSet.Bind(ViewHolder.SwipeRefresh)
+                .For(v => v.BeginRefreshingBinding())
+                .To(vm => vm.Loading);
+
+            bindingSet.Bind(ViewHolder.SwipeRefresh)
+                .For(v => v.EndRefreshingBinding())
+                .To(vm => vm.Loading);
+
+            bindingSet.Bind(ViewHolder.SwipeRefresh)
+                .For(v => v.ValueChangedBinding())
+                .To(vm => vm.RefreshCommand);
         }
     }
 }

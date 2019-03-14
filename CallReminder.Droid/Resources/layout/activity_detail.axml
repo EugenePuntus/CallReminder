@@ -88,7 +88,8 @@
 		layout="@layout/fragment_week_day"
 		android:layout_below="@id/separator2"/>
 
-	<android.support.design.widget.FloatingActionButton		
+	<android.support.design.widget.FloatingActionButton	
+		android:id="@+id/save_reminder_button"	
 		style="@style/AppTheme.Fab"
 		app:layout_anchorGravity="end|bottom"
 		android:layout_alignParentRight="true"

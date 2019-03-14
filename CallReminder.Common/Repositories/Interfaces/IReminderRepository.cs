@@ -8,9 +8,9 @@ namespace CallReminder.Core.Repositories.Interfaces
 {
     public interface IReminderRepository
     {
-        Task<ReminderModel> CreateOrUpdateReminderAsync(ReminderModel model, CancellationToken cancellationToken);
+        Task<bool> CreateOrUpdateReminderAsync(ReminderModel model, CancellationToken cancellationToken);
 
-        Task<IEnumerable<ReminderModel>> GetReminders(CancellationToken cancellationToken);
+        Task<IEnumerable<ReminderModel>> GetRemindersAsync(CancellationToken cancellationToken);
 
         Task<ReminderModel> GetReminderById(Guid id, CancellationToken cancellationToken);
 

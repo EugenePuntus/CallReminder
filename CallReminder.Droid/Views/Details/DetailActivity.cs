@@ -73,6 +73,10 @@ namespace CallReminder.Droid.Views.Details
             bindingSet.Bind(ViewHolder.CalendarWeekDayViewHolder)
                 .For(v => v.WeekdayCheckedChangedBinding())
                 .To(vm => vm.DayOfWeeks);
+
+            bindingSet.Bind(ViewHolder.SaveReminderButton)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.SaveReminderCommand);
         }
 
         private void TimeFromSelect_OnClick(object sender, EventArgs eventArgs)
@@ -80,6 +84,5 @@ namespace CallReminder.Droid.Views.Details
             var frag = TimePickerFragment.NewInstance(ViewModel.Time, time => ViewModel.Time = time);
             frag.Show(FragmentManager, string.Empty);
         }
-
     }
 }

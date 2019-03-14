@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
 using CallReminder.Core.Bootstrappers;
-using CallReminder.Core.Presentation;
+using CallReminder.Core.Presentation.ViewModels;
 using CallReminder.Droid.Bootstraper;
 using FlexiMvvm.Bootstrappers;
 using FlexiMvvm.Ioc;

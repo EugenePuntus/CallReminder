@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Android.Widget;
+using CallReminder.Core.ValueConverters;
 using CallReminder.Droid.Views;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Bindings.Custom;
@@ -10,16 +10,16 @@ namespace CallReminder.Droid.Bindings
 {
     internal static class WeekdayBinding
     {
-        public static TargetItemBinding<WeekDayFragmentViewHolder, IEnumerable<DayOfWeek>> WeekdayCheckedChangedBinding(
-            [NotNull] this IItemReference<WeekDayFragmentViewHolder> weekDayFragemntReference)
+        public static TargetItemBinding<WeekDayFragmentViewHolder, DayOfWeeksFlags> WeekdayCheckedChangedBinding(
+            [NotNull] this IItemReference<WeekDayFragmentViewHolder> weekDayFragmentReference)
         {
-            if (weekDayFragemntReference == null)
+            if (weekDayFragmentReference == null)
             {
-                throw new ArgumentNullException(nameof(weekDayFragemntReference));
+                throw new ArgumentNullException(nameof(weekDayFragmentReference));
             }
 
-            return new TargetItemOneWayCustomBinding<WeekDayFragmentViewHolder, IEnumerable<DayOfWeek>>(
-                weekDayFragemntReference,
+            return new TargetItemOneWayCustomBinding<WeekDayFragmentViewHolder, DayOfWeeksFlags>(
+                weekDayFragmentReference,
                 (holder, weeks) =>
                 {
 
@@ -31,45 +31,46 @@ namespace CallReminder.Droid.Bindings
                     holder.Suturday.Checked = false;
                     holder.Sunday.Checked = false;
 
-                    foreach (var week in weeks)
+                    if (weeks.HasFlag(DayOfWeeksFlags.Monday))
                     {
-                        switch (week)
-                        {
-                            case DayOfWeek.Monday:
-                                holder.Monday.Checked = true;
-                                break;
+                        holder.Monday.Checked = true;
+                    }
 
-                            case DayOfWeek.Tuesday:
-                                holder.Tuesday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Tuesday))
+                    {
+                        holder.Tuesday.Checked = true;
+                    }
 
-                            case DayOfWeek.Wednesday:
-                                holder.Wednesday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Wednesday))
+                    {
+                        holder.Wednesday.Checked = true;
+                    }
 
-                            case DayOfWeek.Thursday:
-                                holder.Thursday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Thursday))
+                    {
+                        holder.Thursday.Checked = true;
+                    }
 
-                            case DayOfWeek.Friday:
-                                holder.Friday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Friday))
+                    {
+                        holder.Friday.Checked = true;
+                    }
 
-                            case DayOfWeek.Saturday:
-                                holder.Suturday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Saturday))
+                    {
+                        holder.Suturday.Checked = true;
+                    }
 
-                            case DayOfWeek.Sunday:
-                                holder.Sunday.Checked = true;
-                                break;
-                        }
+                    if (weeks.HasFlag(DayOfWeeksFlags.Sunday))
+                    {
+                        holder.Sunday.Checked = true;
                     }
                 },
                 () => "CheckedChanged");
         }
 
 
-        public static TargetItemBinding<WeekDayFragmentViewHolder, IEnumerable<DayOfWeek>> WeekdayCheckedAndCheckedChangedBinding(
+        public static TargetItemBinding<WeekDayFragmentViewHolder, DayOfWeeksFlags> WeekdayCheckedAndCheckedChangedBinding(
             [NotNull] this IItemReference<WeekDayFragmentViewHolder> weekDayFragemntReference,
             bool trackCanExecuteCommandChanged = false)
         {
@@ -78,7 +79,7 @@ namespace CallReminder.Droid.Bindings
                 throw new ArgumentNullException(nameof(weekDayFragemntReference));
             }
 
-            return new TargetItemTwoWayCustomBinding<WeekDayFragmentViewHolder,IEnumerable<DayOfWeek>, CompoundButton.CheckedChangeEventArgs>(
+            return new TargetItemTwoWayCustomBinding<WeekDayFragmentViewHolder, DayOfWeeksFlags, CompoundButton.CheckedChangeEventArgs>(
                 weekDayFragemntReference,
                 (holder, handler) =>
                 {
@@ -115,48 +116,47 @@ namespace CallReminder.Droid.Bindings
                 },
                 (holder, args) =>
                 {
-                    var listWeekday = new List<DayOfWeek>();
+                    DayOfWeeksFlags weeks = DayOfWeeksFlags.None;
 
                     if (holder.Monday.Checked)
                     {
-                        listWeekday.Add(DayOfWeek.Monday);
+                        weeks = weeks | DayOfWeeksFlags.Monday;
                     }
 
                     if (holder.Tuesday.Checked)
                     {
-                        listWeekday.Add(DayOfWeek.Tuesday);
+                        weeks = weeks | DayOfWeeksFlags.Tuesday;
                     }
 
                     if (holder.Wednesday.Checked)
                     {
-                        listWeekday.Add(DayOfWeek.Wednesday);
+                        weeks = weeks | DayOfWeeksFlags.Wednesday;
                     }
 
                     if (holder.Thursday.Checked)
                     {
-                        listWeekday.Add(DayOfWeek.Thursday);
+                        weeks = weeks | DayOfWeeksFlags.Thursday;
                     }
 
                     if (holder.Friday.Checked)
                     {
-                        listWeekday.Add(DayOfWeek.Friday);
+                        weeks = weeks | DayOfWeeksFlags.Friday;
                     }
 
                     if (holder.Suturday.Checked)
                     {
-                        listWeekday.Add(DayOfWeek.Saturday);
+                        weeks = weeks | DayOfWeeksFlags.Saturday;
                     }
 
                     if (holder.Sunday.Checked)
                     {
-                        listWeekday.Add(DayOfWeek.Sunday);
+                        weeks = weeks | DayOfWeeksFlags.Sunday;
                     }
 
-                    return listWeekday;
+                    return weeks;
                 },
                 (holder, weeks) =>
                 {
-
                     holder.Monday.Checked = false;
                     holder.Tuesday.Checked = false;
                     holder.Wednesday.Checked = false;
@@ -165,38 +165,39 @@ namespace CallReminder.Droid.Bindings
                     holder.Suturday.Checked = false;
                     holder.Sunday.Checked = false;
 
-                    foreach (var week in weeks)
+                    if (weeks.HasFlag(DayOfWeeksFlags.Monday))
                     {
-                        switch (week)
-                        {
-                            case DayOfWeek.Monday:
-                                holder.Monday.Checked = true;
-                                break;
+                        holder.Monday.Checked = true;
+                    }
 
-                            case DayOfWeek.Tuesday:
-                                holder.Tuesday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Tuesday))
+                    {
+                        holder.Tuesday.Checked = true;
+                    }
 
-                            case DayOfWeek.Wednesday:
-                                holder.Wednesday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Wednesday))
+                    {
+                        holder.Wednesday.Checked = true;
+                    }
 
-                            case DayOfWeek.Thursday:
-                                holder.Thursday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Thursday))
+                    {
+                        holder.Thursday.Checked = true;
+                    }
 
-                            case DayOfWeek.Friday:
-                                holder.Friday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Friday))
+                    {
+                        holder.Friday.Checked = true;
+                    }
 
-                            case DayOfWeek.Saturday:
-                                holder.Suturday.Checked = true;
-                                break;
+                    if (weeks.HasFlag(DayOfWeeksFlags.Saturday))
+                    {
+                        holder.Suturday.Checked = true;
+                    }
 
-                            case DayOfWeek.Sunday:
-                                holder.Sunday.Checked = true;
-                                break;
-                        }
+                    if (weeks.HasFlag(DayOfWeeksFlags.Sunday))
+                    {
+                        holder.Sunday.Checked = true;
                     }
                 },
                 () => "CheckedChanged");

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using CallReminder.Core.ValueConverters;
 
 namespace CallReminder.Core.Domain
 {
@@ -13,7 +13,7 @@ namespace CallReminder.Core.Domain
 
         public DateTime Time { get; set; }
 
-        public IEnumerable<DayOfWeek> DayOfWeeks { get; set; }
+        public DayOfWeeksFlags DayOfWeeks { get; set; }
 
         public bool Repeat { get; set; }
     }

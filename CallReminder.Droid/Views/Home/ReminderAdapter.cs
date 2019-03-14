@@ -18,5 +18,13 @@ namespace CallReminder.Droid.Views.Home
 
             return new ReminderItemCellViewHolder(view);
         }
+
+
+        protected override RecyclerViewObservableViewHolder OnCreateHeaderViewHolder(ViewGroup parent)
+        {
+            var view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.cell_reminder_header, parent, false);
+
+            return new ReminderHeaderCellViewHolder(view);
+        }
     }
 }

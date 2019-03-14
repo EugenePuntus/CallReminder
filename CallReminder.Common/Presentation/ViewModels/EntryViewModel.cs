@@ -1,7 +1,7 @@
 ﻿using CallReminder.Core.Navigation;
 using FlexiMvvm;
 
-namespace CallReminder.Core.Presentation
+namespace CallReminder.Core.Presentation.ViewModels
 {
     public class EntryViewModel : ViewModelBase
     {

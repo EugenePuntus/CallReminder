@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
 using CallReminder.Core.Navigation;
-using CallReminder.Core.Presentation;
+using CallReminder.Core.Presentation.ViewModels;
 using CallReminder.Core.Presentation.ViewModels.Contacts;
 using CallReminder.Core.Presentation.ViewModels.Details;
 using CallReminder.Core.Presentation.ViewModels.Home;

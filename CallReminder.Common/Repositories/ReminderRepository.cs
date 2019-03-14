@@ -1,79 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CallReminder.Core.Domain;
+using CallReminder.Core.Mapper;
+using CallReminder.Core.Orm;
 using CallReminder.Core.Repositories.Interfaces;
-#pragma warning disable 1998
 
 namespace CallReminder.Core.Repositories
 {
-    internal class ReminderRepository : IReminderRepository
+    public class ReminderRepository : IReminderRepository
     {
-        public async Task<ReminderModel> CreateOrUpdateReminderAsync(ReminderModel model, CancellationToken cancellationToken)
+        private readonly IReminderDatabase _context;
+
+        public ReminderRepository(IReminderDatabase context)
         {
-            return model;
+            _context = context;
+        }
+
+        public async Task<bool> CreateOrUpdateReminderAsync(ReminderModel model, CancellationToken cancellationToken)
+        {
+            var result = await _context.Insert(model.ToOrm(), cancellationToken);
+            return result > 0;
+        }
+
+        public async Task<IEnumerable<ReminderModel>> GetRemindersAsync(CancellationToken cancellationToken)
+        {
+            var reminders = await _context.SelectAll<ReminderOrm>(cancellationToken);
+            return reminders.Select(x => x.ToModel());
         }
 
         public async Task<ReminderModel> GetReminderById(Guid id, CancellationToken cancellationToken)
         {
-            return new ReminderModel()
-            {
-                Id = id,
-                DayOfWeeks = new[] {DayOfWeek.Monday, DayOfWeek.Friday, DayOfWeek.Thursday},
-                Name = "Grandma",
-                Phone = "+375291112233",
-                Repeat = true,
-                Time = new DateTime(1990, 01, 01, 10, 00, 00)
-            };
-        }
-
-        public async Task<IEnumerable<ReminderModel>> GetReminders(CancellationToken cancellationToken)
-        {
-            return new List<ReminderModel>()
-            {
-                new ReminderModel()
-                {
-                    Id = Guid.NewGuid(),
-                    DayOfWeeks = new[] {DayOfWeek.Monday, DayOfWeek.Friday, DayOfWeek.Thursday},
-                    Name = "Grandma",
-                    Phone = "+375291112233",
-                    Repeat = true,
-                    Time = new DateTime(1990, 01, 01, 10, 00, 00)
-                },
-                new ReminderModel()
-                {
-                    Id = Guid.NewGuid(),
-                    DayOfWeeks = new[] {DayOfWeek.Saturday, DayOfWeek.Friday, DayOfWeek.Wednesday},
-                    Name = "Father",
-                    Phone = "+375299998877",
-                    Repeat = true,
-                    Time = new DateTime(1990, 01, 01, 11, 00, 00)
-                },
-                new ReminderModel()
-                {
-                    Id = Guid.NewGuid(),
-                    DayOfWeeks = new[] {DayOfWeek.Sunday, DayOfWeek.Wednesday},
-                    Name = "Mother",
-                    Phone = "+375298974111",
-                    Repeat = true,
-                    Time = new DateTime(1990, 01, 01, 12, 00, 00)
-                },
-                new ReminderModel()
-                {
-                    Id = Guid.NewGuid(),
-                    DayOfWeeks = new[] {DayOfWeek.Thursday},
-                    Name = "Brother",
-                    Phone = "++375294567896",
-                    Repeat = true,
-                    Time = new DateTime(1990, 01, 01, 14, 00, 00)
-                }
-            };
+            var reminder = await _context.Select(new ReminderOrm() {Id = id}, cancellationToken);
+            return reminder.ToModel();
         }
 
         public async Task<bool> RemoveReminderByIdTask(Guid id, CancellationToken cancellationToken)
         {
-            return true;
+            var result = await _context.Remove(new ReminderOrm() { Id = id }, cancellationToken);
+            return result > 0;
         }
     }
 }

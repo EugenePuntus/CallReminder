@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CallReminder.Core.Domain;
+using CallReminder.Core.Infrastructure;
 using CallReminder.Core.Navigation;
 using CallReminder.Core.Repositories.Interfaces;
+using CallReminder.Core.Resourses;
+using CallReminder.Core.ValueConverters;
 using FlexiMvvm;
 using ICommand = System.Windows.Input.ICommand;
 
@@ -14,12 +16,13 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
     {
         private readonly INavigationService _navigationService;
         private readonly IReminderRepository _reminderRepository;
+        private readonly IDialogService _dialogService;
         private Guid _id;
         private string _name;
         private string _phone;
         private DateTime _time;
         private bool _repeat;
-        private IEnumerable<DayOfWeek> _dayOfWeeks;
+        private DayOfWeeksFlags _dayOfWeeks;
 
         public string Name
         {
@@ -45,7 +48,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
             set => Set(ref _repeat, value);
         }
 
-        public IEnumerable<DayOfWeek> DayOfWeeks
+        public DayOfWeeksFlags DayOfWeeks
         {
             get => _dayOfWeeks;
             set => Set(ref _dayOfWeeks, value);
@@ -55,21 +58,13 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
 
         public ICommand ChangeContactCommand => CommandProvider.Get(ChangeContact);
 
-        public ICommand SaveReminderCommand => CommandProvider.GetForAsync(SaveReminder);
+        public ICommand SaveReminderCommand => CommandProvider.GetForAsync<object>(SaveReminder);
 
-        public DetailViewModel(INavigationService navigationService, IReminderRepository reminderRepository)
+        public DetailViewModel(INavigationService navigationService, IReminderRepository reminderRepository, IDialogService dialogService)
         {
             _navigationService = navigationService;
             _reminderRepository = reminderRepository;
-
-            //DayOfWeeks = Enum.GetValues(typeof(DayOfWeek))
-            //    .Cast<DayOfWeek>()
-            //    .To;
-
-            //DayOfWeeks = new RangeObservableCollection<ReminderDayOfWeekParameters>(
-            //    Enum.GetValues(typeof(DayOfWeek))
-            //        .Cast<DayOfWeek>()
-            //        .Select(dayOfWeek => new ReminderDayOfWeekParameters(dayOfWeek)));
+            _dialogService = dialogService;
         }
 
         protected override async Task InitializeAsync(ReminderDetailParameters parameters)
@@ -87,7 +82,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
                 reminder = new ReminderModel()
                 {
                     Id = Guid.Empty,
-                    DayOfWeeks = new DayOfWeek[] { },
+                    DayOfWeeks = DayOfWeeksFlags.None,
                     Repeat = false,
                     Time = new DateTime(1990, 1, 1, 9, 0, 0),
                     Name = string.Empty,
@@ -113,7 +108,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
             _navigationService.NavigateToContact(this);
         }
 
-        private async Task SaveReminder()
+        private async Task SaveReminder(object sender)
         {
             var model = new ReminderModel()
             {
@@ -125,7 +120,14 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
                 DayOfWeeks = DayOfWeeks
             };
 
+            if(string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Phone))
+            {
+                _dialogService.ShowNotification(sender, Strings.FillRequiredField);
+                return;
+            }
+
             await _reminderRepository.CreateOrUpdateReminderAsync(model, CancellationToken.None);
+            BackToHome();
         }
     }
 }

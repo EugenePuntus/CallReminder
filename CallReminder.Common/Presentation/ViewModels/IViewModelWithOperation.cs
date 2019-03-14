@@ -1,4 +1,4 @@
-﻿namespace CallReminder.Core.Presentation
+﻿namespace CallReminder.Core.Presentation.ViewModels
 {
     public interface IViewModelWithOperation
     {

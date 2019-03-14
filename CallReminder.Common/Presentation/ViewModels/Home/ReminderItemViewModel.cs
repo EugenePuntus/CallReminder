@@ -1,7 +1,7 @@
 ﻿using System;
 using CallReminder.Core.Domain;
+using CallReminder.Core.ValueConverters;
 using FlexiMvvm;
-using FlexiMvvm.Collections;
 
 namespace CallReminder.Core.Presentation.ViewModels.Home
 {
@@ -10,7 +10,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
         private string _name;
         private string _phone;
         private DateTime _time;
-        private RangeObservableCollection<DayOfWeek> _dayOfWeeks;
+        private DayOfWeeksFlags _dayOfWeeks;
         private bool _repeat;
 
         public Guid Id { get; }
@@ -33,7 +33,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
             set => Set(ref _time, value);
         }
 
-        public RangeObservableCollection<DayOfWeek> DayOfWeeks
+        public DayOfWeeksFlags DayOfWeeks
         {
             get => _dayOfWeeks;
             set => Set(ref _dayOfWeeks, value);
@@ -52,7 +52,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
             Name = model.Name;
             Phone = model.Phone;
             Time = model.Time;
-            DayOfWeeks = new RangeObservableCollection<DayOfWeek>(model.DayOfWeeks);
+            DayOfWeeks = model.DayOfWeeks;
             Repeat = model.Repeat;
         }
     }

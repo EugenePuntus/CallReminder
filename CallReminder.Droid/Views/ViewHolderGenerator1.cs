@@ -59,6 +59,7 @@ namespace CallReminder.Droid.Views
          private TextView timeReminder;
          private View separator2;
          private WeekDayFragmentViewHolder calendarWeekDayViewHolder;
+         private FloatingActionButton saveReminderButton;
 
         public DetailActivityViewHolder( Activity activity)
         {
@@ -106,12 +107,17 @@ namespace CallReminder.Droid.Views
         
         public WeekDayFragmentViewHolder CalendarWeekDayViewHolder =>
             calendarWeekDayViewHolder ?? (calendarWeekDayViewHolder = new WeekDayFragmentViewHolder(activity.FindViewById<LinearLayout>(Resource.Id.calendar_week_day)));
+
+        
+        public FloatingActionButton SaveReminderButton =>
+            saveReminderButton ?? (saveReminderButton = activity.FindViewById<FloatingActionButton>(Resource.Id.save_reminder_button));
     }
 
     public partial class HomeActivityViewHolder
     {
          private readonly Activity activity;
 
+         private SwipeRefreshLayout swipeRefresh;
          private RecyclerView reminderRecyclerView;
          private FloatingActionButton addNewReminder;
 
@@ -121,6 +127,10 @@ namespace CallReminder.Droid.Views
 
             this.activity = activity;
         }
+
+        
+        public SwipeRefreshLayout SwipeRefresh =>
+            swipeRefresh ?? (swipeRefresh = activity.FindViewById<SwipeRefreshLayout>(Resource.Id.swipe_refresh));
 
         
         public RecyclerView ReminderRecyclerView =>
@@ -150,6 +160,17 @@ namespace CallReminder.Droid.Views
         
         public TextView ContactPhone =>
             contactPhone ?? (contactPhone = ItemView.FindViewById<TextView>(Resource.Id.contact_phone));
+    }
+
+    public partial class ReminderHeaderCellViewHolder
+    {
+         private TextView lastUpdateTime;
+
+
+
+        
+        public TextView LastUpdateTime =>
+            lastUpdateTime ?? (lastUpdateTime = ItemView.FindViewById<TextView>(Resource.Id.last_update_time));
     }
 
     public partial class ReminderItemCellViewHolder

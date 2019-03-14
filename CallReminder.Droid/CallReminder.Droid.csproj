@@ -59,8 +59,10 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bindings\SwipeRefreshLayoutBinding.cs" />
     <Compile Include="Bindings\WeekdayBinding.cs" />
     <Compile Include="Bootstraper\AndroidBootstrapper.cs" />
+    <Compile Include="Infrastructure\AndroidDialogService.cs" />
     <Compile Include="Infrastructure\ContactService.cs" />
     <Compile Include="Navigation\NavigationService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Views\Details\TimePickerFragment.cs" />
     <Compile Include="Views\Home\HomeActivity.cs" />
     <Compile Include="Views\Home\ReminderAdapter.cs" />
+    <Compile Include="Views\Home\ReminderHeaderCellViewHolder.cs" />
     <Compile Include="Views\Home\ReminderItemCellViewHolder.cs" />
     <Compile Include="Views\SplashScreenActivity.cs" />
     <Compile Include="Views\ViewHolderGenerator1.cs">
@@ -104,6 +107,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\account_circle_black.png" />
     <AndroidResource Include="Resources\drawable\contact_selector.xml" />
+    <AndroidResource Include="Resources\layout\cell_reminder_header.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator1.cs</LastGenOutput>
@@ -120,7 +126,6 @@
     <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\menu\menu_main.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher_round.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
@@ -160,7 +165,9 @@
       <Name>CallReminder.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\menu\" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_home.axml">
       <SubType>Designer</SubType>

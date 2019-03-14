@@ -1,4 +1,4 @@
-﻿using CallReminder.Core.Presentation;
+﻿using CallReminder.Core.Presentation.ViewModels;
 using CallReminder.Core.Presentation.ViewModels.Contacts;
 using CallReminder.Core.Presentation.ViewModels.Details;
 using CallReminder.Core.Presentation.ViewModels.Home;

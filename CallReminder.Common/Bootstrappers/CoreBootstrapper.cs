@@ -1,4 +1,5 @@
-﻿using CallReminder.Core.Presentation;
+﻿using CallReminder.Core.Orm;
+using CallReminder.Core.Presentation;
 using CallReminder.Core.Repositories;
 using CallReminder.Core.Repositories.Interfaces;
 using FlexiMvvm;
@@ -19,7 +20,8 @@ namespace CallReminder.Core.Bootstrappers
 
         private void SetupDependencies(ISimpleIoc simpleIoc)
         {
-            simpleIoc.Register<IReminderRepository>(() => new ReminderRepository());
+            simpleIoc.Register<IReminderDatabase>(() => new ReminderDatabase());
+            simpleIoc.Register<IReminderRepository>(() => new ReminderRepository(simpleIoc.Get<IReminderDatabase>()));
         }
 
         private void SetupViewModelLocator(IDependencyProvider dependencyProvider)
