@@ -16,8 +16,14 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
         private readonly INavigationService _navigationService;
         private readonly IReminderRepository _reminderRepository;
         private bool _loading;
+        private bool _removeState;
 
         public RangeObservableCollection<ReminderItemViewModel> Reminders { get; } = new RangeObservableCollection<ReminderItemViewModel>();
+
+        public int QuantityToRemove
+        {
+            get => Reminders.Count(x => x.SelectedByRemove);
+        }
 
         public bool Loading
         {
@@ -25,11 +31,32 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
             set => Set(ref _loading, value);
         }
 
+        public bool RemoveState
+        {
+            get => _removeState;
+            set
+            {
+                var notEqual = _removeState != value;
+                Set(ref _removeState, value);
+                
+                if (notEqual)
+                {
+                    foreach (var reminder in Reminders)
+                    {
+                        reminder.RemoveState = value;
+                        reminder.SelectedByRemove = false;
+                    }
+                }
+            }
+        }
+
         public ICommand ReminderSelectedCommand => CommandProvider.Get<ReminderItemViewModel>(NavigateToDetail);
 
         public ICommand RefreshCommand => CommandProvider.GetForAsync(RefreshAsync);
 
-        public ICommand RemoveCommand => CommandProvider.GetForAsync<ReminderItemViewModel>(RemoveAsync);
+        public ICommand RemoveCommand => CommandProvider.GetForAsync(RemoveAsync);
+
+        public ICommand CheckedOrUncheckedAllCommand => CommandProvider.Get<bool>(CheckedOrUnCheckedReminder);
 
         public HomeViewModel(INavigationService navigationService, IReminderRepository reminderRepository)
         {
@@ -57,7 +84,13 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
 
                 var reminderModels = await _reminderRepository.GetRemindersAsync(CancellationToken.None);
                 Reminders.Clear();
-                Reminders.AddRange(reminderModels.Select(vacation => new ReminderItemViewModel(vacation, _reminderRepository)));
+
+                foreach (var reminderModel in reminderModels)
+                {
+                    var itemViewModel = new ReminderItemViewModel(reminderModel, _reminderRepository);
+                    itemViewModel.PropertyChangedWeakSubscribe((sender, args) => RaisePropertyChanged(nameof(QuantityToRemove)));
+                    Reminders.Add(itemViewModel);
+                }
             }
             finally
             {
@@ -65,18 +98,32 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
             }
         }
 
-        private async Task RemoveAsync(ReminderItemViewModel param)
+        private async Task RemoveAsync()
         {
             try
             {
                 Loading = true;
+                var reminderToRemove = Reminders.Where(x => x.SelectedByRemove).ToArray();
 
-                await _reminderRepository.RemoveReminderByIdTask(param.Id, CancellationToken.None);
-                await RefreshAsync();
+                for (int i = 0; i < reminderToRemove.Length; i++)
+                {
+                    await _reminderRepository.RemoveReminderByIdTask(reminderToRemove[i].Id, CancellationToken.None);
+                    Reminders.Remove(reminderToRemove[i]);
+                }
+
+                RemoveState = false;
             }
             finally
             {
                 Loading = false;
+            }
+        }
+
+        private void CheckedOrUnCheckedReminder(bool state)
+        {
+            foreach (var reminder in Reminders)
+            {
+                reminder.SelectedByRemove = state;
             }
         }
     }

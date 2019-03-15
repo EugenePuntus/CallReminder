@@ -3,7 +3,8 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+	android:animateLayoutChanges="true">
 		
 	<android.support.design.widget.AppBarLayout
 		android:layout_width="match_parent"
@@ -26,6 +27,28 @@
 			<Button
 				android:background="@drawable/abc_ic_menu_overflow_material"
 				style="@style/AppTheme.Toolbar.ImageButton"
+				android:layout_gravity="right"/>
+
+		</android.support.v7.widget.Toolbar>
+
+		<android.support.v7.widget.Toolbar
+			android:id="@+id/remove_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="46dp">
+
+			<CheckBox 
+				android:id="@+id/checked_all"
+				android:layout_gravity="left"
+				android:text="quantity"
+				android:buttonTint="@android:color/white"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				style="@style/AppTheme.Toolbar.Header"/>
+			
+			<Button
+				android:id="@+id/remove_button"
+				android:text="Remove"
+				style="@style/AppTheme.Toolbar.Button"
 				android:layout_gravity="right"/>
 
 		</android.support.v7.widget.Toolbar>

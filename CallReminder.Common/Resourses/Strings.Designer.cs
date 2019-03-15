@@ -86,5 +86,14 @@ namespace CallReminder.Core.Resourses {
                 return ResourceManager.GetString("RequiredFieldError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select fields.
+        /// </summary>
+        internal static string SelectFields {
+            get {
+                return ResourceManager.GetString("SelectFields", resourceCulture);
+            }
+        }
     }
 }

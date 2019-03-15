@@ -120,6 +120,9 @@ namespace CallReminder.Droid.Views
          private AppBarLayout pageAppbar;
          private Toolbar mainToolbar;
          private TextView backButton;
+         private Toolbar removeToolbar;
+         private CheckBox checkedAll;
+         private Button removeButton;
          private SwipeRefreshLayout swipeRefresh;
          private RecyclerView reminderRecyclerView;
          private FloatingActionButton addNewReminder;
@@ -142,6 +145,18 @@ namespace CallReminder.Droid.Views
         
         public TextView BackButton =>
             backButton ?? (backButton = activity.FindViewById<TextView>(Resource.Id.back_button));
+
+        
+        public Toolbar RemoveToolbar =>
+            removeToolbar ?? (removeToolbar = activity.FindViewById<Toolbar>(Resource.Id.remove_toolbar));
+
+        
+        public CheckBox CheckedAll =>
+            checkedAll ?? (checkedAll = activity.FindViewById<CheckBox>(Resource.Id.checked_all));
+
+        
+        public Button RemoveButton =>
+            removeButton ?? (removeButton = activity.FindViewById<Button>(Resource.Id.remove_button));
 
         
         public SwipeRefreshLayout SwipeRefresh =>
@@ -190,12 +205,17 @@ namespace CallReminder.Droid.Views
 
     public partial class ReminderItemCellViewHolder
     {
+         private CheckBox selectedFromRemove;
          private TextView reminderName;
          private TextView reminderTime;
          private Android.Support.V7.Widget.SwitchCompat reminderActive;
          private TextView reminderDuration;
 
 
+
+        
+        public CheckBox SelectedFromRemove =>
+            selectedFromRemove ?? (selectedFromRemove = ItemView.FindViewById<CheckBox>(Resource.Id.selected_from_remove));
 
         
         public TextView ReminderName =>

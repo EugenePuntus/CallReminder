@@ -1,6 +1,7 @@
 ﻿using Android.Views;
 using CallReminder.Core.Presentation.ViewModels.Home;
 using CallReminder.Core.ValueConverters;
+using CallReminder.Droid.ValueConverters;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 
@@ -21,6 +22,15 @@ namespace CallReminder.Droid.Views
         {
             base.Bind(bindingSet);
 
+            bindingSet.Bind(SelectedFromRemove)
+                .For(v => v.Visibility)
+                .To(vm => vm.RemoveState)
+                .WithConvertion<BoolToVisibilityValueConverter>();
+
+            bindingSet.Bind(SelectedFromRemove)
+                .For(v => v.CheckedAndCheckedChangeBinding())
+                .To(vm => vm.SelectedByRemove);
+
             bindingSet.Bind(ReminderName)
                 .For(v => v.TextBinding())
                 .To(vm => vm.Name);
@@ -33,10 +43,25 @@ namespace CallReminder.Droid.Views
             bindingSet.Bind(ReminderActive)
                 .For(v => v.CheckedAndCheckedChangeBinding())
                 .To(vm => vm.Repeat);
+
+            bindingSet.Bind(ReminderActive)
+                .For(v => v.Visibility)
+                .To(vm => vm.RemoveState)
+                .WithConvertion<BoolToVisibilityInverseValueConverter>();
         }
 
         public bool OnLongClick(View v)
         {
+            if (ItemsContext != null)
+            {
+                ItemsContext.RemoveState = true;
+            }
+
+            if (Item != null)
+            {
+                Item.SelectedByRemove = true;
+            }
+
             return true;
         }
     }

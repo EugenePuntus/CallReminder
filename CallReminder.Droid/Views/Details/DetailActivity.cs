@@ -77,7 +77,7 @@ namespace CallReminder.Droid.Views.Details
                 .TwoWay();
 
             bindingSet.Bind(ViewHolder.CalendarWeekDayViewHolder)
-                .For(v => v.WeekdayCheckedChangedBinding())
+                .For(v => v.WeekdayCheckedAndCheckedChangedBinding())
                 .To(vm => vm.DayOfWeeks);
 
             bindingSet.Bind(ViewHolder.SaveReminderButton)

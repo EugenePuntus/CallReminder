@@ -15,6 +15,8 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
         private DateTime _time;
         private DayOfWeeksFlags _dayOfWeeks;
         private bool _repeat;
+        private bool _removeState;
+        private bool _selectedByRemove;
 
         public Guid Id { get; }
 
@@ -51,6 +53,24 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
                 ReminderUpdate();
             }
         }
+
+        public bool RemoveState
+        {
+            get => _removeState;
+            set => Set(ref _removeState, value);
+        }
+
+        public bool SelectedByRemove
+        {
+            get => _selectedByRemove;
+            set
+            {
+                Set(ref _selectedByRemove, value);
+                SelectedByRemoveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        public event EventHandler SelectedByRemoveChanged;
 
         public ReminderItemViewModel(ReminderModel model, IReminderRepository reminderRepository)
         {

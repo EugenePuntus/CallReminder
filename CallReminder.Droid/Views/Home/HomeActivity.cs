@@ -1,8 +1,11 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Support.V7.Widget;
+using Android.Views;
 using CallReminder.Core.Presentation.ViewModels.Home;
+using CallReminder.Core.ValueConverters;
 using CallReminder.Droid.Bindings;
+using CallReminder.Droid.ValueConverters;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
 
@@ -40,6 +43,34 @@ namespace CallReminder.Droid.Views.Home
         {
             base.Bind(bindingSet);
 
+            bindingSet.Bind(ViewHolder.MainToolbar)
+                .For(v => v.Visibility)
+                .To(vm => vm.RemoveState)
+                .WithConvertion<BoolToVisibilityInverseValueConverter>();
+
+            bindingSet.Bind(ViewHolder.RemoveToolbar)
+                .For(v => v.Visibility)
+                .To(vm => vm.RemoveState)
+                .WithConvertion<BoolToVisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.CheckedAll)
+                .For(v => v.TextBinding())
+                .To(vm => vm.QuantityToRemove)
+                .WithConvertion<QuantityToTextValueConverter>();
+
+            bindingSet.Bind(ViewHolder.CheckedAll)
+                .For(v => v.CheckedAndCheckedChangeBinding())
+                .To(vm => vm.CheckedOrUncheckedAllCommand);
+
+            bindingSet.Bind(ViewHolder.RemoveButton)
+                .For(v => v.Visibility)
+                .To(vm => vm.QuantityToRemove)
+                .WithConvertion<QuantityToVisibleValueConverter>();
+
+            bindingSet.Bind(ViewHolder.RemoveButton)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.RemoveCommand);
+
             bindingSet.Bind(ReminderAdapter)
                 .For(v => v.ItemClickedBinding())
                 .To(vm => vm.ReminderSelectedCommand);
@@ -59,6 +90,17 @@ namespace CallReminder.Droid.Views.Home
             bindingSet.Bind(ViewHolder.SwipeRefresh)
                 .For(v => v.ValueChangedBinding())
                 .To(vm => vm.RefreshCommand);
+        }
+
+        public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+        {
+            if (ViewModel.RemoveState)
+            {
+                ViewModel.RemoveState = false;
+                return false;
+            }
+
+            return base.OnKeyDown(keyCode, e);
         }
     }
 }

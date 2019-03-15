@@ -126,4 +126,7 @@
   <data name="RequiredFieldError" xml:space="preserve">
     <value>Field can't empty</value>
   </data>
+  <data name="SelectFields" xml:space="preserve">
+    <value>Select fields</value>
+  </data>
 </root>
