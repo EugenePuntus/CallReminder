@@ -25,8 +25,6 @@ namespace CallReminder.Droid.Views.Details
 
             ViewHolder = new DetailActivityViewHolder(this);
             ViewHolder.TimeReminder.ClickWeakSubscribe(TimeFromSelect_OnClick);
-
-            SetSupportActionBar(ViewHolder.ActionToolbar);
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

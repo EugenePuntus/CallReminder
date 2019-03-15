@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading;
 using CallReminder.Core.Domain;
+using CallReminder.Core.Repositories.Interfaces;
 using CallReminder.Core.ValueConverters;
 using FlexiMvvm;
 
@@ -7,6 +9,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
 {
     public class ReminderItemViewModel : ViewModelBase
     {
+        private readonly IReminderRepository _reminderRepository;
         private string _name;
         private string _phone;
         private DateTime _time;
@@ -42,18 +45,38 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
         public bool Repeat
         {
             get => _repeat;
-            set => Set(ref _repeat, value);
+            set
+            {
+                Set(ref _repeat, value);
+                ReminderUpdate();
+            }
         }
 
-
-        public ReminderItemViewModel(ReminderModel model)
+        public ReminderItemViewModel(ReminderModel model, IReminderRepository reminderRepository)
         {
+            _reminderRepository = reminderRepository;
+
             Id = model.Id;
             Name = model.Name;
             Phone = model.Phone;
             Time = model.Time;
             DayOfWeeks = model.DayOfWeeks;
             Repeat = model.Repeat;
+        }
+
+        private void ReminderUpdate()
+        {
+            var model = new ReminderModel()
+            {
+                Id = Id,
+                Phone = Phone,
+                Name = Name,
+                Time = Time,
+                Repeat = Repeat,
+                DayOfWeeks = DayOfWeeks
+            };
+
+            _reminderRepository.CreateOrUpdateReminderAsync(model, CancellationToken.None);
         }
     }
 }

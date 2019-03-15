@@ -8,7 +8,7 @@ using FlexiMvvm.Views.V7;
 
 namespace CallReminder.Droid.Views.Home
 {
-    [Activity(Label = "HomeActivity")]
+    [Activity(Label = "HomeActivity", Theme = "@style/AppTheme.NoActionBar")]
     public class HomeActivity : FlxBindableAppCompatActivity<HomeViewModel>
     {
         private HomeActivityViewHolder ViewHolder { get; set; }

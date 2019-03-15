@@ -29,8 +29,6 @@ namespace CallReminder.Droid.Views.Contacts
 
             ViewHolder.ContactRecyclerView.SetAdapter(ContactAdapter);
             ViewHolder.ContactRecyclerView.SetLayoutManager(new LinearLayoutManager(this, 1, false));
-
-            SetSupportActionBar(ViewHolder.ContactToolbar);
         }
 
         public override void Bind(BindingSet<ContactViewModel> bindingSet)

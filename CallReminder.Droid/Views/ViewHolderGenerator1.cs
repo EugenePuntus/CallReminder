@@ -117,6 +117,9 @@ namespace CallReminder.Droid.Views
     {
          private readonly Activity activity;
 
+         private AppBarLayout pageAppbar;
+         private Toolbar mainToolbar;
+         private TextView backButton;
          private SwipeRefreshLayout swipeRefresh;
          private RecyclerView reminderRecyclerView;
          private FloatingActionButton addNewReminder;
@@ -127,6 +130,18 @@ namespace CallReminder.Droid.Views
 
             this.activity = activity;
         }
+
+        
+        public AppBarLayout PageAppbar =>
+            pageAppbar ?? (pageAppbar = activity.FindViewById<AppBarLayout>(Resource.Id.page_appbar));
+
+        
+        public Toolbar MainToolbar =>
+            mainToolbar ?? (mainToolbar = activity.FindViewById<Toolbar>(Resource.Id.main_toolbar));
+
+        
+        public TextView BackButton =>
+            backButton ?? (backButton = activity.FindViewById<TextView>(Resource.Id.back_button));
 
         
         public SwipeRefreshLayout SwipeRefresh =>

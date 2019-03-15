@@ -15,10 +15,12 @@ namespace CallReminder.Droid.Views.Home
         protected override RecyclerViewObservableViewHolder OnCreateItemViewHolder(ViewGroup parent, int viewType)
         {
             var view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.cell_reminder_item, parent, false);
+            var item = new ReminderItemCellViewHolder(view);
 
-            return new ReminderItemCellViewHolder(view);
+            view.SetOnLongClickListener(item);
+
+            return item;
         }
-
 
         protected override RecyclerViewObservableViewHolder OnCreateHeaderViewHolder(ViewGroup parent)
         {

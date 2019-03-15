@@ -73,7 +73,13 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
         public DayOfWeeksFlags DayOfWeeks
         {
             get => _dayOfWeeks;
-            set => Set(ref _dayOfWeeks, value);
+            set
+            {
+                if (_dayOfWeeks != value)
+                {
+                    Set(ref _dayOfWeeks, value);
+                }
+            }
         }
 
         public ICommand BackToHomeCommand => CommandProvider.Get(BackToHome);

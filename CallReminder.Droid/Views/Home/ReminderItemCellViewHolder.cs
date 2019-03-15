@@ -7,7 +7,9 @@ using FlexiMvvm.Collections;
 // ReSharper disable once CheckNamespace
 namespace CallReminder.Droid.Views
 {
-    public partial class ReminderItemCellViewHolder : RecyclerViewBindableItemViewHolder<HomeViewModel, ReminderItemViewModel>
+    public partial class ReminderItemCellViewHolder 
+        : RecyclerViewBindableItemViewHolder<HomeViewModel, ReminderItemViewModel>,
+          View.IOnLongClickListener
     {
         public ReminderItemCellViewHolder(View itemView) 
             : base(itemView)
@@ -31,6 +33,11 @@ namespace CallReminder.Droid.Views
             bindingSet.Bind(ReminderActive)
                 .For(v => v.CheckedAndCheckedChangeBinding())
                 .To(vm => vm.Repeat);
+        }
+
+        public bool OnLongClick(View v)
+        {
+            return true;
         }
     }
 }

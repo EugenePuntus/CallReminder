@@ -29,6 +29,8 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
 
         public ICommand RefreshCommand => CommandProvider.GetForAsync(RefreshAsync);
 
+        public ICommand RemoveCommand => CommandProvider.GetForAsync<ReminderItemViewModel>(RemoveAsync);
+
         public HomeViewModel(INavigationService navigationService, IReminderRepository reminderRepository)
         {
             _navigationService = navigationService;
@@ -55,7 +57,22 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
 
                 var reminderModels = await _reminderRepository.GetRemindersAsync(CancellationToken.None);
                 Reminders.Clear();
-                Reminders.AddRange(reminderModels.Select(vacation => new ReminderItemViewModel(vacation)));
+                Reminders.AddRange(reminderModels.Select(vacation => new ReminderItemViewModel(vacation, _reminderRepository)));
+            }
+            finally
+            {
+                Loading = false;
+            }
+        }
+
+        private async Task RemoveAsync(ReminderItemViewModel param)
+        {
+            try
+            {
+                Loading = true;
+
+                await _reminderRepository.RemoveReminderByIdTask(param.Id, CancellationToken.None);
+                await RefreshAsync();
             }
             finally
             {
