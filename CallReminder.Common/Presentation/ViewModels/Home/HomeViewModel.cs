@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CallReminder.Core.Infrastructure;
 using CallReminder.Core.Navigation;
 using CallReminder.Core.Presentation.ViewModels.Details;
 using CallReminder.Core.Repositories.Interfaces;
@@ -15,6 +16,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
     {
         private readonly INavigationService _navigationService;
         private readonly IReminderRepository _reminderRepository;
+        private readonly IAlarmService _alarmService;
         private bool _loading;
         private bool _removeState;
 
@@ -58,10 +60,11 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
 
         public ICommand CheckedOrUncheckedAllCommand => CommandProvider.Get<bool>(CheckedOrUnCheckedReminder);
 
-        public HomeViewModel(INavigationService navigationService, IReminderRepository reminderRepository)
+        public HomeViewModel(INavigationService navigationService, IReminderRepository reminderRepository, IAlarmService alarmService)
         {
             _navigationService = navigationService;
             _reminderRepository = reminderRepository;
+            _alarmService = alarmService;
         }
 
         protected override async Task InitializeAsync()
@@ -87,7 +90,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
 
                 foreach (var reminderModel in reminderModels)
                 {
-                    var itemViewModel = new ReminderItemViewModel(reminderModel, _reminderRepository);
+                    var itemViewModel = new ReminderItemViewModel(reminderModel, _reminderRepository, _alarmService);
                     itemViewModel.PropertyChangedWeakSubscribe((sender, args) => RaisePropertyChanged(nameof(QuantityToRemove)));
                     Reminders.Add(itemViewModel);
                 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using FlexiMvvm.ValueConverters;
 
-namespace CallReminder.Core.ValueConverters
+namespace CallReminder.Core.Presentation.ValueConverters
 {
     [Flags]
     public enum DayOfWeeksFlags

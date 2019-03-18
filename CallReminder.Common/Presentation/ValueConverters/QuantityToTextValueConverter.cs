@@ -3,7 +3,7 @@ using System.Globalization;
 using CallReminder.Core.Resourses;
 using FlexiMvvm.ValueConverters;
 
-namespace CallReminder.Core.ValueConverters
+namespace CallReminder.Core.Presentation.ValueConverters
 {
     public class QuantityToTextValueConverter : ValueConverter<int, string>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using Android.Widget;
-using CallReminder.Core.ValueConverters;
+using CallReminder.Core.Presentation.ValueConverters;
 using CallReminder.Droid.Views;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Bindings.Custom;

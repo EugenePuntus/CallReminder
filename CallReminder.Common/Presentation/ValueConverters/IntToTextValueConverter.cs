@@ -2,7 +2,7 @@
 using System.Globalization;
 using FlexiMvvm.ValueConverters;
 
-namespace CallReminder.Core.ValueConverters
+namespace CallReminder.Core.Presentation.ValueConverters
 {
     public class IntToTextValueConverter : ValueConverter<int, string>
     {

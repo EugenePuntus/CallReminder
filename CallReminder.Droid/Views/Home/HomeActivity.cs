@@ -2,8 +2,8 @@
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Views;
+using CallReminder.Core.Presentation.ValueConverters;
 using CallReminder.Core.Presentation.ViewModels.Home;
-using CallReminder.Core.ValueConverters;
 using CallReminder.Droid.Bindings;
 using CallReminder.Droid.ValueConverters;
 using FlexiMvvm.Bindings;

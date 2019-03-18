@@ -63,11 +63,13 @@
     <Compile Include="Bindings\SwipeRefreshLayoutBinding.cs" />
     <Compile Include="Bindings\WeekdayBinding.cs" />
     <Compile Include="Bootstraper\AndroidBootstrapper.cs" />
+    <Compile Include="Infrastructure\AlarmService.cs" />
     <Compile Include="Infrastructure\AndroidDialogService.cs" />
     <Compile Include="Infrastructure\ContactService.cs" />
     <Compile Include="Navigation\NavigationService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ReminderReceiver.cs" />
     <Compile Include="ValueConverters\BoolToVisibilityInverseValueConverter.cs" />
     <Compile Include="ValueConverters\BoolToVisibilityValueConverter.cs" />
     <Compile Include="ValueConverters\QuantityToVisibleValueConverter.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Views\Home\ReminderAdapter.cs" />
     <Compile Include="Views\Home\ReminderHeaderCellViewHolder.cs" />
     <Compile Include="Views\Home\ReminderItemCellViewHolder.cs" />
+    <Compile Include="Views\Notifications\NotificationActivity.cs" />
     <Compile Include="Views\SplashScreenActivity.cs" />
     <Compile Include="Views\ViewHolderGenerator1.cs">
       <AutoGen>True</AutoGen>
@@ -112,6 +115,9 @@
     <AndroidResource Include="Resources\drawable\account_circle_black.png" />
     <AndroidResource Include="Resources\drawable\contact_selector.xml" />
     <AndroidResource Include="Resources\layout\cell_reminder_header.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\activity_notification.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <Content Include="Views\ViewHolderGenerator.tt">

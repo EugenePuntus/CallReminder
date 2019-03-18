@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading;
 using CallReminder.Core.Domain;
+using CallReminder.Core.Infrastructure;
+using CallReminder.Core.Presentation.ValueConverters;
 using CallReminder.Core.Repositories.Interfaces;
-using CallReminder.Core.ValueConverters;
 using FlexiMvvm;
 
 namespace CallReminder.Core.Presentation.ViewModels.Home
@@ -10,6 +11,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
     public class ReminderItemViewModel : ViewModelBase
     {
         private readonly IReminderRepository _reminderRepository;
+        private readonly IAlarmService _alarmService;
         private string _name;
         private string _phone;
         private DateTime _time;
@@ -50,7 +52,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
             set
             {
                 Set(ref _repeat, value);
-                ReminderUpdate();
+                ReminderChanged?.Invoke(null, EventArgs.Empty);
             }
         }
 
@@ -71,10 +73,12 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
         }
 
         public event EventHandler SelectedByRemoveChanged;
+        public event EventHandler ReminderChanged;
 
-        public ReminderItemViewModel(ReminderModel model, IReminderRepository reminderRepository)
+        public ReminderItemViewModel(ReminderModel model, IReminderRepository reminderRepository, IAlarmService alarmService)
         {
             _reminderRepository = reminderRepository;
+            _alarmService = alarmService;
 
             Id = model.Id;
             Name = model.Name;
@@ -82,9 +86,11 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
             Time = model.Time;
             DayOfWeeks = model.DayOfWeeks;
             Repeat = model.Repeat;
+
+            ReminderChanged += OnReminderChanged;
         }
 
-        private void ReminderUpdate()
+        private void OnReminderChanged(object sender, EventArgs e)
         {
             var model = new ReminderModel()
             {
@@ -97,6 +103,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Home
             };
 
             _reminderRepository.CreateOrUpdateReminderAsync(model, CancellationToken.None);
+            _alarmService.SwitchingState(model);
         }
     }
 }

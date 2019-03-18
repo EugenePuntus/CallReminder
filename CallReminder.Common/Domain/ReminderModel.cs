@@ -1,5 +1,5 @@
 ﻿using System;
-using CallReminder.Core.ValueConverters;
+using CallReminder.Core.Presentation.ValueConverters;
 
 namespace CallReminder.Core.Domain
 {

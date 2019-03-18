@@ -2,9 +2,9 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using CallReminder.Core.Presentation.ValueConverters;
 using CallReminder.Core.Presentation.ViewModels.Contacts;
 using CallReminder.Core.Presentation.ViewModels.Details;
-using CallReminder.Core.ValueConverters;
 using CallReminder.Droid.Bindings;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views;

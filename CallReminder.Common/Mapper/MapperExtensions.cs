@@ -1,6 +1,6 @@
 ﻿using CallReminder.Core.Domain;
 using CallReminder.Core.Orm;
-using CallReminder.Core.ValueConverters;
+using CallReminder.Core.Presentation.ValueConverters;
 
 namespace CallReminder.Core.Mapper
 {

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:gravity="center">
+
+	<TextView
+		android:id="@+id/title_notification_text_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="12dp"
+		android:text="Reminder"
+		android:textStyle="bold"
+		/>
+
+	<TextView
+		android:id="@+id/name_text_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="12dp"
+		android:text="Call your grandma"
+		/>
+
+	<TextView
+		android:id="@+id/phone_text_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="12dp"
+		android:text="+375 (29) 111-22-44"
+		/>
+
+	<Button
+		android:id="@+id/call_by_phone_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="CALL"
+		/>
+
+</LinearLayout>

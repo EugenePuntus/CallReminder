@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CallReminder.Core.Domain;
+using CallReminder.Core.Presentation.ValueConverters;
 using CallReminder.Core.Repositories.Interfaces;
-using CallReminder.Core.ValueConverters;
 
 #pragma warning disable 1998
 

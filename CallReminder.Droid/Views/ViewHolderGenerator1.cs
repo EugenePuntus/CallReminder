@@ -171,6 +171,39 @@ namespace CallReminder.Droid.Views
             addNewReminder ?? (addNewReminder = activity.FindViewById<FloatingActionButton>(Resource.Id.add_new_reminder));
     }
 
+    public partial class NotificationActivityViewHolder
+    {
+         private readonly Activity activity;
+
+         private TextView titleNotificationTextView;
+         private TextView nameTextView;
+         private TextView phoneTextView;
+         private Button callByPhoneButton;
+
+        public NotificationActivityViewHolder( Activity activity)
+        {
+            if (activity == null) throw new ArgumentNullException(nameof(activity));
+
+            this.activity = activity;
+        }
+
+        
+        public TextView TitleNotificationTextView =>
+            titleNotificationTextView ?? (titleNotificationTextView = activity.FindViewById<TextView>(Resource.Id.title_notification_text_view));
+
+        
+        public TextView NameTextView =>
+            nameTextView ?? (nameTextView = activity.FindViewById<TextView>(Resource.Id.name_text_view));
+
+        
+        public TextView PhoneTextView =>
+            phoneTextView ?? (phoneTextView = activity.FindViewById<TextView>(Resource.Id.phone_text_view));
+
+        
+        public Button CallByPhoneButton =>
+            callByPhoneButton ?? (callByPhoneButton = activity.FindViewById<Button>(Resource.Id.call_by_phone_button));
+    }
+
     public partial class ContactItemCellViewHolder
     {
          private ImageView contactImage;
@@ -208,8 +241,8 @@ namespace CallReminder.Droid.Views
          private CheckBox selectedFromRemove;
          private TextView reminderName;
          private TextView reminderTime;
-         private Android.Support.V7.Widget.SwitchCompat reminderActive;
          private TextView reminderDuration;
+         private Android.Support.V7.Widget.SwitchCompat reminderActive;
 
 
 
@@ -226,12 +259,12 @@ namespace CallReminder.Droid.Views
             reminderTime ?? (reminderTime = ItemView.FindViewById<TextView>(Resource.Id.reminder_time));
 
         
-        public Android.Support.V7.Widget.SwitchCompat ReminderActive =>
-            reminderActive ?? (reminderActive = ItemView.FindViewById<Android.Support.V7.Widget.SwitchCompat>(Resource.Id.reminder_active));
-
-        
         public TextView ReminderDuration =>
             reminderDuration ?? (reminderDuration = ItemView.FindViewById<TextView>(Resource.Id.reminder_duration));
+
+        
+        public Android.Support.V7.Widget.SwitchCompat ReminderActive =>
+            reminderActive ?? (reminderActive = ItemView.FindViewById<Android.Support.V7.Widget.SwitchCompat>(Resource.Id.reminder_active));
     }
 
     public partial class WeekDayFragmentViewHolder

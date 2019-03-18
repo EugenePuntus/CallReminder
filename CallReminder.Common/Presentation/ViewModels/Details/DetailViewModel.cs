@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using CallReminder.Core.Domain;
 using CallReminder.Core.Infrastructure;
 using CallReminder.Core.Navigation;
+using CallReminder.Core.Presentation.ValueConverters;
 using CallReminder.Core.Repositories.Interfaces;
 using CallReminder.Core.Resourses;
-using CallReminder.Core.ValueConverters;
 using FlexiMvvm;
 using ICommand = System.Windows.Input.ICommand;
 
