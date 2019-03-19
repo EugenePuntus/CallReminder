@@ -22,12 +22,12 @@ namespace CallReminder.Droid.Infrastructure
 
             if (view == null)
             {
-                Toast.MakeText(Application.Context, message, ToastLength.Long);
+                Toast.MakeText(Application.Context, message, ToastLength.Long)
+                    .Show();
                 return;
             }
 
-            Snackbar.Make(view, message,
-                    Snackbar.LengthLong)
+            Snackbar.Make(view, message, Snackbar.LengthLong)
                 .Show();
         }
     }
