@@ -7,7 +7,9 @@ namespace CallReminder.Core.Presentation.ViewModels.Contacts
     {
         private string _name;
         private string _phone;
-        private string _photoId;
+        private string _photoUri;
+
+        public long Id { get; }
 
         public string Name
         {
@@ -21,17 +23,18 @@ namespace CallReminder.Core.Presentation.ViewModels.Contacts
             set => Set(ref _phone, value);
         }
 
-        public string PhotoId
+        public string PhotoUri
         {
-            get => _photoId;
-            set => Set(ref _photoId, value);
+            get => _photoUri;
+            set => Set(ref _photoUri, value);
         }
 
         public ContactItemViewModel(ContactModel model)
         {
+            Id = model.Id;
             Name = model.Name;
             Phone = model.Phone;
-            PhotoId = model.PhotoId;
+            PhotoUri = model.PhotoUri;
         }
     }
 }

@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bindings\CustomTextViewBindings.cs" />
+    <Compile Include="Bindings\ImageViewBinding.cs" />
     <Compile Include="Bindings\SwipeRefreshLayoutBinding.cs" />
     <Compile Include="Bindings\WeekdayBinding.cs" />
     <Compile Include="Bootstraper\AndroidBootstrapper.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Services\ReminderReceiver.cs" />
     <Compile Include="ValueConverters\BoolToVisibilityInverseValueConverter.cs" />
     <Compile Include="ValueConverters\BoolToVisibilityValueConverter.cs" />
+    <Compile Include="ValueConverters\PhotoIdToPhotoUriValueConverter.cs" />
     <Compile Include="ValueConverters\QuantityToVisibleValueConverter.cs" />
     <Compile Include="Views\Contacts\ContactAdapter.cs" />
     <Compile Include="Views\Contacts\ContactItemCellViewHolder.cs" />
