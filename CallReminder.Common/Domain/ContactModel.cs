@@ -9,5 +9,7 @@
         public string Phone { get; set; }
 
         public string PhotoUri { get; set; }
+
+        public long PhotoFileId { get; set; }
     }
 }

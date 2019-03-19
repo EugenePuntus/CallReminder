@@ -24,6 +24,7 @@ namespace CallReminder.Droid.Infrastructure
                 ContactsContract.Contacts.InterfaceConsts.HasPhoneNumber,
                 ContactsContract.CommonDataKinds.Phone.Number,
                 ContactsContract.Contacts.InterfaceConsts.PhotoUri,
+                ContactsContract.Contacts.InterfaceConsts.PhotoFileId,
             };
 
             var loader = new CursorLoader(Application.Context, uri, _projections, null, null, null);
@@ -50,7 +51,8 @@ namespace CallReminder.Droid.Infrastructure
                         Id = _cursor.GetLong(_cursor.GetColumnIndex(_projections[0])),
                         Name = _cursor.GetString(_cursor.GetColumnIndex(_projections[1])),
                         Phone = _cursor.GetString(_cursor.GetColumnIndex(_projections[3])),
-                        PhotoUri = _cursor.GetString(_cursor.GetColumnIndex(_projections[4]))
+                        PhotoUri = _cursor.GetString(_cursor.GetColumnIndex(_projections[4])),
+                        PhotoFileId = _cursor.GetLong(_cursor.GetColumnIndex(_projections[5]))
                     });
                 }
             } while (_cursor.MoveToNext());
