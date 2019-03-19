@@ -10,7 +10,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="12dp"
-		android:text="Reminder"
+		android:text="@string/title_notification_page"
 		android:textStyle="bold"
 		/>
 
@@ -34,7 +34,7 @@
 		android:id="@+id/call_by_phone_button"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Call"
+		android:text="@string/title_call_button"
 		/>
 
 </LinearLayout>

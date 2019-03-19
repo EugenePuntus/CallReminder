@@ -24,7 +24,7 @@
 			<TextView 
 				android:id="@+id/back_button"
 				android:layout_gravity="left|center"
-				android:text="Edit contact"
+				android:text="@string/title_detail_page"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="20dp"
@@ -50,7 +50,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			style="@style/AppTheme.TextInputEditText"
-			android:hint="Name of contact"
+			android:hint="@string/hint_name_contact_text_view"
 			android:imeOptions="actionNext"/>
 	</android.support.design.widget.TextInputLayout>
 	
@@ -65,7 +65,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			style="@style/AppTheme.TextInputEditText"
-			android:hint="Phone of contact"
+			android:hint="@string/hint_phone_contact_text_view"
 			android:imeOptions="actionDone"/>
 	</android.support.design.widget.TextInputLayout>
 

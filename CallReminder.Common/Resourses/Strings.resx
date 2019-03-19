@@ -120,8 +120,26 @@
   <data name="AppName" xml:space="preserve">
     <value>Call Reminder</value>
   </data>
+  <data name="CallActionNotification" xml:space="preserve">
+    <value>Call</value>
+  </data>
+  <data name="CancelActionNotification" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="FillRequiredField" xml:space="preserve">
     <value>Fill required fields</value>
+  </data>
+  <data name="HintNameContactTextView" xml:space="preserve">
+    <value>Name of contact</value>
+  </data>
+  <data name="HintPhoneContactTextView" xml:space="preserve">
+    <value>Phone of contact</value>
+  </data>
+  <data name="ReminderCallTo" xml:space="preserve">
+    <value>Reminder call to</value>
+  </data>
+  <data name="ReminderSetFormatWithOneParam" xml:space="preserve">
+    <value>Reminder set: {0}</value>
   </data>
   <data name="RequiredFieldError" xml:space="preserve">
     <value>Field can't empty</value>
@@ -143,5 +161,8 @@
   </data>
   <data name="TitleNotificationPage" xml:space="preserve">
     <value>Reminder</value>
+  </data>
+  <data name="TitleRemoveButton" xml:space="preserve">
+    <value>Remove</value>
   </data>
 </root>

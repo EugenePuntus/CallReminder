@@ -22,7 +22,7 @@ namespace CallReminder.Core.Resourses {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    public class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace CallReminder.Core.Resourses {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CallReminder.Core.Resourses.Strings", typeof(Strings).Assembly);
@@ -51,7 +51,7 @@ namespace CallReminder.Core.Resourses {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,25 +63,79 @@ namespace CallReminder.Core.Resourses {
         /// <summary>
         ///   Looks up a localized string similar to Call Reminder.
         /// </summary>
-        internal static string AppName {
+        public static string AppName {
             get {
                 return ResourceManager.GetString("AppName", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Call.
+        /// </summary>
+        public static string CallActionNotification {
+            get {
+                return ResourceManager.GetString("CallActionNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelActionNotification {
+            get {
+                return ResourceManager.GetString("CancelActionNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill required fields.
         /// </summary>
-        internal static string FillRequiredField {
+        public static string FillRequiredField {
             get {
                 return ResourceManager.GetString("FillRequiredField", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name of contact.
+        /// </summary>
+        public static string HintNameContactTextView {
+            get {
+                return ResourceManager.GetString("HintNameContactTextView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone of contact.
+        /// </summary>
+        public static string HintPhoneContactTextView {
+            get {
+                return ResourceManager.GetString("HintPhoneContactTextView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reminder call to.
+        /// </summary>
+        public static string ReminderCallTo {
+            get {
+                return ResourceManager.GetString("ReminderCallTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reminder set: {0}.
+        /// </summary>
+        public static string ReminderSetFormatWithOneParam {
+            get {
+                return ResourceManager.GetString("ReminderSetFormatWithOneParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Field can&apos;t empty.
         /// </summary>
-        internal static string RequiredFieldError {
+        public static string RequiredFieldError {
             get {
                 return ResourceManager.GetString("RequiredFieldError", resourceCulture);
             }
@@ -90,7 +144,7 @@ namespace CallReminder.Core.Resourses {
         /// <summary>
         ///   Looks up a localized string similar to Select fields.
         /// </summary>
-        internal static string SelectFields {
+        public static string SelectFields {
             get {
                 return ResourceManager.GetString("SelectFields", resourceCulture);
             }
@@ -99,7 +153,7 @@ namespace CallReminder.Core.Resourses {
         /// <summary>
         ///   Looks up a localized string similar to Call.
         /// </summary>
-        internal static string TitleCallButton {
+        public static string TitleCallButton {
             get {
                 return ResourceManager.GetString("TitleCallButton", resourceCulture);
             }
@@ -108,7 +162,7 @@ namespace CallReminder.Core.Resourses {
         /// <summary>
         ///   Looks up a localized string similar to Choice contact.
         /// </summary>
-        internal static string TitleContactPage {
+        public static string TitleContactPage {
             get {
                 return ResourceManager.GetString("TitleContactPage", resourceCulture);
             }
@@ -117,7 +171,7 @@ namespace CallReminder.Core.Resourses {
         /// <summary>
         ///   Looks up a localized string similar to Edit contact.
         /// </summary>
-        internal static string TitleDetailPage {
+        public static string TitleDetailPage {
             get {
                 return ResourceManager.GetString("TitleDetailPage", resourceCulture);
             }
@@ -126,7 +180,7 @@ namespace CallReminder.Core.Resourses {
         /// <summary>
         ///   Looks up a localized string similar to Reminder.
         /// </summary>
-        internal static string TitleHomePage {
+        public static string TitleHomePage {
             get {
                 return ResourceManager.GetString("TitleHomePage", resourceCulture);
             }
@@ -135,9 +189,18 @@ namespace CallReminder.Core.Resourses {
         /// <summary>
         ///   Looks up a localized string similar to Reminder.
         /// </summary>
-        internal static string TitleNotificationPage {
+        public static string TitleNotificationPage {
             get {
                 return ResourceManager.GetString("TitleNotificationPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        public static string TitleRemoveButton {
+            get {
+                return ResourceManager.GetString("TitleRemoveButton", resourceCulture);
             }
         }
     }

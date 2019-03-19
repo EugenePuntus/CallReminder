@@ -3423,6 +3423,12 @@ namespace CallReminder.Droid
 			// aapt resource value: 0x7f090028
 			public const int fill_required_field = 2131296296;
 			
+			// aapt resource value: 0x7f090029
+			public const int hint_name_contact_text_view = 2131296297;
+			
+			// aapt resource value: 0x7f09002a
+			public const int hint_phone_contact_text_view = 2131296298;
+			
 			// aapt resource value: 0x7f090021
 			public const int password_toggle_content_description = 2131296289;
 			
@@ -3438,32 +3444,35 @@ namespace CallReminder.Droid
 			// aapt resource value: 0x7f090025
 			public const int path_password_strike_through = 2131296293;
 			
-			// aapt resource value: 0x7f090029
-			public const int required_field_error = 2131296297;
+			// aapt resource value: 0x7f09002b
+			public const int required_field_error = 2131296299;
 			
 			// aapt resource value: 0x7f090011
 			public const int search_menu_title = 2131296273;
 			
-			// aapt resource value: 0x7f09002a
-			public const int select_fields = 2131296298;
+			// aapt resource value: 0x7f09002c
+			public const int select_fields = 2131296300;
 			
 			// aapt resource value: 0x7f090026
 			public const int status_bar_notification_info_overflow = 2131296294;
 			
-			// aapt resource value: 0x7f09002b
-			public const int title_call_button = 2131296299;
-			
-			// aapt resource value: 0x7f09002c
-			public const int title_contact_page = 2131296300;
-			
 			// aapt resource value: 0x7f09002d
-			public const int title_detail_page = 2131296301;
+			public const int title_call_button = 2131296301;
 			
 			// aapt resource value: 0x7f09002e
-			public const int title_home_page = 2131296302;
+			public const int title_contact_page = 2131296302;
 			
 			// aapt resource value: 0x7f09002f
-			public const int title_notification_page = 2131296303;
+			public const int title_detail_page = 2131296303;
+			
+			// aapt resource value: 0x7f090030
+			public const int title_home_page = 2131296304;
+			
+			// aapt resource value: 0x7f090031
+			public const int title_notification_page = 2131296305;
+			
+			// aapt resource value: 0x7f090032
+			public const int title_remove_button = 2131296306;
 			
 			static String()
 			{

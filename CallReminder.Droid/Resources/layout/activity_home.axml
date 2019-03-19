@@ -19,7 +19,7 @@
 			<TextView 
 				android:id="@+id/back_button"
 				android:layout_gravity="left"
-				android:text="Reminder"
+				android:text="@string/title_home_page"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				style="@style/AppTheme.Toolbar.Header"/>
@@ -47,7 +47,7 @@
 			
 			<Button
 				android:id="@+id/remove_button"
-				android:text="Remove"
+				android:text="@string/title_remove_button"
 				style="@style/AppTheme.Toolbar.Button"
 				android:layout_gravity="right"/>
 

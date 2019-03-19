@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Support.V4.App;
 using CallReminder.Core.Presentation.ViewModels.Notifications;
 using CallReminder.Droid.Views.Notifications;
+using CallReminder.Core.Resourses;
 using FlexiMvvm.Views;
 
 namespace CallReminder.Droid.Services
@@ -11,6 +12,12 @@ namespace CallReminder.Droid.Services
     [BroadcastReceiver]
     internal class ReminderReceiver : BroadcastReceiver
     {
+        private string ChannelId { get; } = "CHANNEL_REMINDER";
+
+        private string ChannelName { get; } = "channel_reminder";
+
+        private string ChannelDescription { get; } = "channel by notification reminder";
+
         public override void OnReceive(Context context, Intent intent)
         {
             CreateNotificationChannel();
@@ -29,16 +36,15 @@ namespace CallReminder.Droid.Services
             var pending = PendingIntent.GetActivity(context, 0,
                 resultIntent,
                 PendingIntentFlags.CancelCurrent);
-            
-            var builder = new NotificationCompat.Builder(context, "CHANNEL_ID_MY")
-                .SetAutoCancel(true)
-                .SetContentTitle("Reminder call to")
-                .SetSmallIcon(Resource.Drawable.notifications_active)
-                .SetContentText(parameters.Name);
 
-            builder.SetContentIntent(pending);
-            builder.AddAction(Resource.Drawable.abc_ic_clear_material, "Cancel", pending);
-            builder.AddAction(Resource.Drawable.baseline_call, "Call", pending);
+            var builder = new NotificationCompat.Builder(context, ChannelId)
+                .SetAutoCancel(true)
+                .SetContentTitle(Strings.ReminderCallTo)
+                .SetSmallIcon(Resource.Drawable.notifications_active)
+                .SetContentText(parameters.Name)
+                .AddAction(Resource.Drawable.abc_ic_clear_material, Strings.CancelActionNotification, pending)
+                .AddAction(Resource.Drawable.baseline_call, Strings.CallActionNotification, pending)
+                .SetContentIntent(pending);
 
             var notification = builder.Build();
 
@@ -54,11 +60,9 @@ namespace CallReminder.Droid.Services
                 return;
             }
 
-            var channelName = "test_chanel";
-            var channelDescription = "test_chanel_description";
-            var channel = new NotificationChannel("CHANNEL_ID_MY", channelName, NotificationImportance.Default)
+            var channel = new NotificationChannel(ChannelId, ChannelName, NotificationImportance.Default)
             {
-                Description = channelDescription
+                Description = ChannelDescription
             };
 
             var notificationManager = (NotificationManager)Application.Context.GetSystemService(Context.NotificationService);

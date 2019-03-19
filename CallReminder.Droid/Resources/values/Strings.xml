@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">Call Reminder</string>
     <string name="fill_required_field">Fill required fields</string>
+    <string name="hint_name_contact_text_view">Name of contact</string>
+    <string name="hint_phone_contact_text_view">Phone of contact</string>
     <string name="required_field_error">Field can\'t empty</string>
     <string name="select_fields">Select fields</string>
     <string name="title_call_button">Call</string>
@@ -9,4 +11,5 @@
     <string name="title_detail_page">Edit contact</string>
     <string name="title_home_page">Reminder</string>
     <string name="title_notification_page">Reminder</string>
+    <string name="title_remove_button">Remove</string>
 </resources>

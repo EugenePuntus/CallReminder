@@ -3,6 +3,7 @@ using Android.Content;
 using CallReminder.Core.Domain;
 using CallReminder.Core.Infrastructure;
 using CallReminder.Core.Presentation.ViewModels.Notifications;
+using CallReminder.Core.Resourses;
 using CallReminder.Droid.Services;
 using FlexiMvvm.Views;
 using Java.Util;
@@ -55,7 +56,7 @@ namespace CallReminder.Droid.Infrastructure
 
             manager.SetInexactRepeating(AlarmType.RtcWakeup, cal.TimeInMillis, intervalMillis, pendingIntent);
 
-            _dialogService.ShowNotification($"Reminder set: {reminderModel.Name}");
+            _dialogService.ShowNotification(string.Format(Strings.ReminderSetFormatWithOneParam, reminderModel.Name));
         }
 
         public void Cancel(ReminderModel reminderModel)
