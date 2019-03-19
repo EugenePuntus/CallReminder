@@ -11,11 +11,6 @@ namespace CallReminder.Droid.Services
     [BroadcastReceiver]
     internal class ReminderReceiver : BroadcastReceiver
     {
-        //public ReminderWithActivityReceiver()
-        //{
-        //    CreateNotificationChannel();
-        //}
-
         public override void OnReceive(Context context, Intent intent)
         {
             CreateNotificationChannel();
@@ -38,10 +33,12 @@ namespace CallReminder.Droid.Services
             var builder = new NotificationCompat.Builder(context, "CHANNEL_ID_MY")
                 .SetAutoCancel(true)
                 .SetContentTitle("Reminder call to")
-                .SetSmallIcon(Resource.Drawable.abc_ic_clear_material)
+                .SetSmallIcon(Resource.Drawable.notifications_active)
                 .SetContentText(parameters.Name);
 
             builder.SetContentIntent(pending);
+            builder.AddAction(Resource.Drawable.abc_ic_clear_material, "Cancel", pending);
+            builder.AddAction(Resource.Drawable.baseline_call, "Call", pending);
 
             var notification = builder.Build();
 

@@ -6,6 +6,6 @@ namespace CallReminder.Core.Infrastructure
     {
         void ShowError(Exception error);
 
-        void ShowNotification(object sender, string message);
+        void ShowNotification(string message);
     }
 }

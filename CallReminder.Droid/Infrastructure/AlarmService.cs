@@ -1,16 +1,23 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Widget;
 using CallReminder.Core.Domain;
 using CallReminder.Core.Infrastructure;
 using CallReminder.Core.Presentation.ViewModels.Notifications;
 using CallReminder.Droid.Services;
 using FlexiMvvm.Views;
+using Java.Util;
 
 namespace CallReminder.Droid.Infrastructure
 {
     internal class AlarmService : IAlarmService
     {
+        private readonly IDialogService _dialogService;
+
+        public AlarmService(IDialogService dialogService)
+        {
+            _dialogService = dialogService;
+        }
+
         public void SwitchingState(ReminderModel reminderModel)
         {
             if(reminderModel.Repeat)
@@ -27,7 +34,7 @@ namespace CallReminder.Droid.Infrastructure
         {
             var context = Application.Context;
 
-            Intent alarmIntent = new Intent(context, typeof(ReminderReceiver));
+            var alarmIntent = new Intent(context, typeof(ReminderReceiver));
             alarmIntent.PutViewModelParameters(
                 new NotificationParameters()
                 {
@@ -35,31 +42,31 @@ namespace CallReminder.Droid.Infrastructure
                     Name = reminderModel.Name
                 });
 
-            var pendingIntent = PendingIntent.GetBroadcast(context, reminderModel.Id.GetHashCode(), alarmIntent, PendingIntentFlags.UpdateCurrent);
+            var pendingIntent = PendingIntent.GetBroadcast(context, reminderModel.Id.GetHashCode(), alarmIntent, PendingIntentFlags.CancelCurrent);
 
-            AlarmManager manager = (AlarmManager)context.GetSystemService(Context.AlarmService);
-            int interval = 86400000;
+            var manager = (AlarmManager)context.GetSystemService(Context.AlarmService);
+            var intervalMillis = 86400000;
 
-            Java.Util.Calendar cal = Java.Util.Calendar.Instance;
+            var cal = Calendar.Instance;
             cal.TimeInMillis = Java.Lang.JavaSystem.CurrentTimeMillis();
-            cal.Set(Java.Util.CalendarField.HourOfDay, reminderModel.Time.Hour);
-            cal.Set(Java.Util.CalendarField.Minute, reminderModel.Time.Minute);
-            cal.Set(Java.Util.CalendarField.Second, 0);
+            cal.Set(CalendarField.HourOfDay, reminderModel.Time.Hour);
+            cal.Set(CalendarField.Minute, reminderModel.Time.Minute);
+            cal.Set(CalendarField.Second, 0);
 
-            manager.SetRepeating(AlarmType.RtcWakeup, cal.TimeInMillis, interval, pendingIntent);
-            Toast.MakeText(context, $"Reminder set: {reminderModel.Name}", ToastLength.Short).Show();
+            manager.SetInexactRepeating(AlarmType.RtcWakeup, cal.TimeInMillis, intervalMillis, pendingIntent);
+
+            _dialogService.ShowNotification($"Reminder set: {reminderModel.Name}");
         }
 
         public void Cancel(ReminderModel reminderModel)
         {
             var context = Application.Context;
 
-            Intent alarmIntent = new Intent(context, typeof(ReminderReceiver));
+            var alarmIntent = new Intent(context, typeof(ReminderReceiver));
             var pendingIntent = PendingIntent.GetBroadcast(context, reminderModel.Id.GetHashCode(), alarmIntent, 0);
 
-            AlarmManager manager = (AlarmManager)context.GetSystemService(Context.AlarmService);
+            var manager = (AlarmManager) context.GetSystemService(Context.AlarmService);
             manager.Cancel(pendingIntent);
-            Toast.MakeText(context, "Alarm Canceled", ToastLength.Short).Show();
         }
     }
 }

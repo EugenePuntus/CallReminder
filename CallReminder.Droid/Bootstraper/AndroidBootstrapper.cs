@@ -22,7 +22,7 @@ namespace CallReminder.Droid.Bootstraper
             simpleIoc.Register<INavigationService>(() => new NavigationService());
             simpleIoc.Register<IContactService>(() => new ContactService());
             simpleIoc.Register<IDialogService>(() => new AndroidDialogService());
-            simpleIoc.Register<IAlarmService>(() => new AlarmService());
+            simpleIoc.Register<IAlarmService>(() => new AlarmService(simpleIoc.Get<IDialogService>()));
         }
     }
 }

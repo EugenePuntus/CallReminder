@@ -95,5 +95,50 @@ namespace CallReminder.Core.Resourses {
                 return ResourceManager.GetString("SelectFields", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Call.
+        /// </summary>
+        internal static string TitleCallButton {
+            get {
+                return ResourceManager.GetString("TitleCallButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choice contact.
+        /// </summary>
+        internal static string TitleContactPage {
+            get {
+                return ResourceManager.GetString("TitleContactPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit contact.
+        /// </summary>
+        internal static string TitleDetailPage {
+            get {
+                return ResourceManager.GetString("TitleDetailPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reminder.
+        /// </summary>
+        internal static string TitleHomePage {
+            get {
+                return ResourceManager.GetString("TitleHomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reminder.
+        /// </summary>
+        internal static string TitleNotificationPage {
+            get {
+                return ResourceManager.GetString("TitleNotificationPage", resourceCulture);
+            }
+        }
     }
 }

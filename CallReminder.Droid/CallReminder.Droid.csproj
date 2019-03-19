@@ -120,6 +120,8 @@
     <AndroidResource Include="Resources\layout\activity_notification.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\notifications_active.png" />
+    <AndroidResource Include="Resources\drawable\baseline_call.png" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator1.cs</LastGenOutput>

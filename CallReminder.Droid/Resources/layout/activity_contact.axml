@@ -18,6 +18,16 @@
 					style="@style/AppTheme.Toolbar.ImageButton"
 					android:background="@drawable/abc_ic_ab_back_material"
 					android:layout_gravity="left"/>
+			
+				<TextView 
+					android:id="@+id/back_button"
+					android:layout_gravity="left|center"
+					android:text="Choice contact"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="20dp"
+					style="@style/AppTheme.Toolbar.Header"/>
+
 				<Button
 					android:id="@+id/apply_button"
 					style="@style/AppTheme.Toolbar.ImageButton"

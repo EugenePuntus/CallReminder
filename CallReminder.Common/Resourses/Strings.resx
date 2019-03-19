@@ -129,4 +129,19 @@
   <data name="SelectFields" xml:space="preserve">
     <value>Select fields</value>
   </data>
+  <data name="TitleCallButton" xml:space="preserve">
+    <value>Call</value>
+  </data>
+  <data name="TitleContactPage" xml:space="preserve">
+    <value>Choice contact</value>
+  </data>
+  <data name="TitleDetailPage" xml:space="preserve">
+    <value>Edit contact</value>
+  </data>
+  <data name="TitleHomePage" xml:space="preserve">
+    <value>Reminder</value>
+  </data>
+  <data name="TitleNotificationPage" xml:space="preserve">
+    <value>Reminder</value>
+  </data>
 </root>

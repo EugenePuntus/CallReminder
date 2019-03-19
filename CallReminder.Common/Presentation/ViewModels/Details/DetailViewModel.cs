@@ -86,7 +86,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
 
         public ICommand ChangeContactCommand => CommandProvider.Get(ChangeContact);
 
-        public ICommand SaveReminderCommand => CommandProvider.GetForAsync<object>(SaveReminder);
+        public ICommand SaveReminderCommand => CommandProvider.GetForAsync(SaveReminder);
 
         public DetailViewModel(INavigationService navigationService, IReminderRepository reminderRepository, IDialogService dialogService)
         {
@@ -136,7 +136,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
             _navigationService.NavigateToContact(this);
         }
 
-        private async Task SaveReminder(object sender)
+        private async Task SaveReminder()
         {
             var model = new ReminderModel()
             {
@@ -150,7 +150,7 @@ namespace CallReminder.Core.Presentation.ViewModels.Details
 
             if(string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Phone))
             {
-                _dialogService.ShowNotification(sender, Strings.FillRequiredField);
+                _dialogService.ShowNotification(Strings.FillRequiredField);
 
                 NameError = string.IsNullOrWhiteSpace(Name) ? Strings.RequiredFieldError : string.Empty;
                 PhoneError = string.IsNullOrWhiteSpace(Phone) ? Strings.RequiredFieldError : string.Empty;

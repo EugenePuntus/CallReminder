@@ -2,4 +2,11 @@
 <resources>
     <string name="app_name">Call Reminder</string>
     <string name="fill_required_field">Fill required fields</string>
+    <string name="required_field_error">Field can\'t empty</string>
+    <string name="select_fields">Select fields</string>
+    <string name="title_call_button">Call</string>
+    <string name="title_contact_page">Choice contact</string>
+    <string name="title_detail_page">Edit contact</string>
+    <string name="title_home_page">Reminder</string>
+    <string name="title_notification_page">Reminder</string>
 </resources>

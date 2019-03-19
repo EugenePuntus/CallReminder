@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using Android.App;
-using Android.Support.Design.Widget;
-using Android.Views;
 using Android.Widget;
 using CallReminder.Core.Infrastructure;
 
@@ -15,19 +13,11 @@ namespace CallReminder.Droid.Infrastructure
             Debug.WriteLine(error.Message);
         }
 
-        public void ShowNotification(object sender, string message)
+        public void ShowNotification(string message)
         {
-            var view = sender as View;
             Debug.WriteLine(message);
 
-            if (view == null)
-            {
-                Toast.MakeText(Application.Context, message, ToastLength.Long)
-                    .Show();
-                return;
-            }
-
-            Snackbar.Make(view, message, Snackbar.LengthLong)
+            Toast.MakeText(Application.Context, message, ToastLength.Long)
                 .Show();
         }
     }
