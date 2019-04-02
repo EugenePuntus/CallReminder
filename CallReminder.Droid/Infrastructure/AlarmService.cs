@@ -68,6 +68,8 @@ namespace CallReminder.Droid.Infrastructure
 
             var manager = (AlarmManager) context.GetSystemService(Context.AlarmService);
             manager.Cancel(pendingIntent);
+
+            var test = 123;
         }
     }
 }
